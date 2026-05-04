@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Chronos Service | Precision Service Management</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <style>
+        :root {
+            /* Paleta de colores extraída de la configuración de Tailwind */
+            --primary: #456084;
+            --primary-dim: #385477;
+            --primary-fixed: #d3e3ff;
+            --primary-container: #d3e3ff;
+            --secondary: #516170;
+            --surface: #f8f9fa;
+            --on-surface: #2b3437;
+            --on-surface-variant: #586064;
+            --surface-container-low: #f1f4f6;
+            --surface-container-lowest: #ffffff;
+            --surface-container-highest: #dbe4e7;
+            --outline-variant: #abb3b7;
+            --white: #ffffff;
+            
+            /* Tipografía */
+            --font-headline: 'Manrope', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        /* Reseteo básico */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--surface);
+            color: var(--on-surface);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 1.5;
+        }
+
+        h1, h2, h3, h4, .font-headline {
+            font-family: var(--font-headline);
+        }
+
+        a { text-decoration: none; }
+        ul { list-style: none; }
+        button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+        /* Iconos de Material */
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* Contenedor principal */
+        .container {
+            max-width: 80rem; /* 1280px */
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        @media (min-width: 768px) {
+            .container { padding: 0 3rem; }
+        }
+
+        /* Navegación */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 80px;
+            z-index: 50;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 12px 40px rgba(69, 96, 132, 0.06);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.05em;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .nav-links {
+            display: none;
+            align-items: center;
+            gap: 2rem;
+            font-family: var(--font-headline);
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        @media (min-width: 768px) {
+            .nav-links { display: flex; }
+        }
+        .nav-link {
+            color: var(--secondary);
+            transition: color 0.2s, transform 0.2s;
+        }
+        .nav-link:hover {
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+        .nav-link.active {
+            color: var(--primary);
+            font-weight: 600;
+            position: relative;
+        }
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 50%;
+        }
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .btn-login {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--secondary);
+            transition: color 0.2s;
+        }
+        .btn-login:hover { color: var(--primary); }
+        .btn-primary {
+            background: linear-gradient(to bottom right, var(--primary), var(--primary-dim));
+            color: var(--white);
+            padding: 0.625rem 1.5rem;
+            border-radius: 0.125rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Estructura Principal */
+        main { padding-top: 80px; }
+        section { padding: 8rem 0; }
+
+        /* Sección Hero */
+        .hero {
+            position: relative;
+            height: 819px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background-color: var(--surface);
+            padding: 0;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.95);
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, var(--surface), rgba(248, 249, 250, 0.4), transparent);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+        }
+        .hero-text { grid-column: span 12; }
+        @media (min-width: 1024px) {
+            .hero-text { grid-column: span 7; }
+        }
+        .label-md {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.05em;
+            margin-bottom: 2rem;
+        }
+        @media (min-width: 768px) {
+            .hero h1 { font-size: 4.5rem; }
+        }
+        .hero p {
+            font-size: 1.125rem;
+            color: var(--on-surface-variant);
+            max-width: 36rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.625;
+        }
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .btn-large {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            border-radius: 0.125rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .btn-text {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            transition: color 0.2s;
+        }
+        .btn-text:hover { color: var(--primary-dim); }
+
+        /* Sección Acerca de Nosotros */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 4rem;
+            align-items: start;
+        }
+        .about-title { grid-column: span 12; }
+        .about-content { grid-column: span 12; }
+        @media (min-width: 1024px) {
+            .about-title { grid-column: span 4; position: sticky; top: 8rem; }
+            .about-content { grid-column: span 8; margin-top: 6rem; }
+        }
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            letter-spacing: -0.05em;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        .title-divider {
+            height: 4px;
+            width: 3rem;
+            background-color: var(--primary);
+            margin-bottom: 2rem;
+        }
+        .about-text-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+        @media (min-width: 768px) {
+            .about-text-grid { grid-template-columns: 1fr 1fr; }
+        }
+        .about-text p { margin-bottom: 1.5rem; line-height: 1.625; }
+        .about-text p.lead { font-size: 1.25rem; font-weight: 500; color: var(--on-surface); }
+        .about-text p.sub { color: var(--on-surface-variant); }
+        .stat-box {
+            background-color: var(--surface-container-low);
+            padding: 2.5rem;
+            border-radius: 0.125rem;
+        }
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: rgba(69, 96, 132, 0.2);
+            margin-bottom: 1rem;
+        }
+        .stat-box h3 { font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .stat-box p { font-size: 0.875rem; color: var(--on-surface-variant); }
+
+        /* Sección de Servicios */
+        .bg-surface-low { background-color: var(--surface-container-low); }
+        .section-header { margin-bottom: 4rem; }
+        .section-subtitle {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: var(--secondary);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .section-heading {
+            font-size: 2.25rem;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            color: var(--on-surface);
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
+        }
+        .bento-item {
+            border-radius: 0.125rem;
+            padding: 2.5rem;
+            transition: transform 0.3s;
+        }
+        .bento-item:hover { transform: translateY(-4px); }
+        .bento-card-light {
+            background-color: var(--surface-container-lowest);
+            box-shadow: 0 12px 40px rgba(69, 96, 132, 0.04);
+        }
+        .bento-card-primary {
+            background-color: var(--primary);
+            color: var(--white);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .bento-card-highest {
+            background-color: var(--surface-container-highest);
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+        .col-8 { grid-column: span 12; }
+        .col-4 { grid-column: span 12; }
+        @media (min-width: 768px) {
+            .col-8 { grid-column: span 8; }
+            .col-4 { grid-column: span 4; }
+        }
+        .icon-large {
+            font-size: 2.25rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        .bento-card-primary .icon-large { color: var(--primary-fixed); }
+        .bento-item h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; }
+        .bento-card-highest h3 { font-size: 1.5rem; }
+        .bento-card-light.col-4 h3 { font-size: 1.25rem; margin-bottom: 0.5rem; }
+        .bento-item p { color: var(--on-surface-variant); margin-bottom: 2rem; max-width: 32rem; }
+        .bento-card-primary p { color: var(--primary-container); font-size: 0.875rem; line-height: 1.625; margin-bottom: 0;}
+        .bento-card-light.col-4 p { font-size: 0.875rem; }
+        .bento-card-highest p { font-size: 0.875rem; margin-bottom: 1.5rem;}
+        
+        .service-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--secondary);
+            margin-bottom: 0.75rem;
+        }
+        .service-list li span {
+            width: 4px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .link-explore {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            margin-top: 3rem;
+            color: var(--white);
+        }
+        .bento-item-flex { flex: 1; }
+        .bento-item-img {
+            display: none;
+            width: 33.333%;
+            border-radius: 0.125rem;
+            overflow: hidden;
+        }
+        @media (min-width: 1024px) {
+            .bento-item-img { display: block; }
+        }
+        .bento-item-img img {
+            width: 100%;
+            height: 10rem;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .bento-card-highest:hover .bento-item-img img {
+            transform: scale(1.05);
+        }
+        .btn-outline {
+            background-color: var(--white);
+            color: var(--primary);
+            padding: 0.5rem 1.5rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border: 1px solid rgba(171, 179, 183, 0.2);
+            border-radius: 0.125rem;
+        }
+
+        /* Sección de Noticias */
+        .news-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 4rem;
+        }
+        .btn-archive {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.875rem;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.25rem;
+        }
+        .news-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+        @media (min-width: 768px) {
+            .news-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        .news-card { cursor: pointer; }
+        .news-img-wrapper {
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            background-color: var(--surface-container-low);
+            aspect-ratio: 16 / 10;
+            position: relative;
+        }
+        .news-img-overlay {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(69, 96, 132, 0.05);
+            transition: background-color 0.3s;
+            z-index: 10;
+        }
+        .news-card:hover .news-img-overlay { background-color: transparent; }
+        .news-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: all 0.5s;
+        }
+        .news-card:hover .news-img-wrapper img { filter: grayscale(0%); }
+        .news-info { display: flex; flex-direction: column; gap: 0.75rem; }
+        .news-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            transition: color 0.3s;
+            margin: 0;
+        }
+        .news-card:hover h3 { color: var(--primary); }
+        .news-card p { font-size: 0.875rem; color: var(--on-surface-variant); line-height: 1.625; }
+
+        /* Testimonios */
+        .bg-surface-high { background-color: var(--surface-container-highest); }
+        .testimonial-container { text-align: center; }
+        .icon-quote {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            display: inline-block;
+        }
+        .testimonial-text {
+            font-size: 1.875rem;
+            font-weight: 300;
+            font-style: italic;
+            line-height: 1.4;
+            color: var(--on-surface);
+            margin: 0 auto 3rem;
+            max-width: 48rem;
+        }
+        .testimonial-author h4 { font-size: 1.125rem; font-weight: 700; letter-spacing: -0.025em; }
+        .testimonial-author p {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: var(--primary);
+            text-transform: uppercase;
+            margin-top: 0.25rem;
+        }
+        .brands {
+            margin-top: 5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4rem;
+            filter: grayscale(100%);
+            opacity: 0.4;
+            flex-wrap: wrap;
+        }
+        .brands span {
+            font-weight: 700;
+            letter-spacing: -0.05em;
+            font-size: 1.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            width: 100%;
+            border-top: 1px solid rgba(171, 179, 183, 0.15);
+            background-color: var(--surface-container-low);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            padding: 4rem 2rem;
+            max-width: 80rem;
+            margin: 0 auto;
+        }
+        @media (min-width: 768px) {
+            .footer-grid { grid-template-columns: repeat(3, 1fr); padding: 4rem 3rem; }
+        }
+        .footer-logo {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        .footer-desc {
+            font-size: 0.875rem;
+            color: var(--secondary);
+            line-height: 1.625;
+            max-width: 20rem;
+        }
+        .footer-col { display: flex; flex-direction: column; gap: 1rem; }
+        .footer-col h4 {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+        .footer-col a, .footer-col p {
+            font-size: 0.875rem;
+            color: var(--secondary);
+            transition: color 0.2s;
+        }
+        .footer-col a:hover { color: var(--primary); }
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+        .social-links span {
+            color: var(--secondary);
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .social-links span:hover { color: var(--primary); }
+        .footer-bottom {
+            padding: 2rem 3rem;
+            max-width: 80rem;
+            margin: 0 auto;
+            border-top: 1px solid rgba(171, 179, 183, 0.1);
+            text-align: center;
+        }
+        .footer-bottom p {
+            font-size: 0.75rem;
+            color: rgba(81, 97, 112, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <!-- TopNavBar -->
+    <nav class="navbar container">
+        <div class="nav-logo">
+            <span>Chronos Service</span>
+        </div>
+        <div class="nav-links">
+            <a class="nav-link active" href="#">Home</a>
+            <a class="nav-link" href="#">Gallery</a>
+            <a class="nav-link" href="#">Budget</a>
+            <a class="nav-link" href="#">Contact</a>
+        </div>
+        <div class="nav-actions">
+            <button class="btn-login">Login</button>
+            <button class="btn-primary">Profile</button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-bg">
+                <img alt="Modern corporate office interior" data-alt="Ultra-modern minimalist corporate office lobby with glass walls, polished stone floors, and soft diffused natural daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6MO8pzCMnVS5d8rAC1peEnaamQhgP7FUIa9umLPjFGncKbpfPeOC2fCm7StBv6Piiv9gL4Gwum5BBQY3d0yCLOTTd20HvqkDlYXdk6Fv8UdG9EZ2th3Qg6TSkToPQixbs8ZkuCaL9kabkWpvac9tJYlgJDC4h5RHPBXPOoKIu6CeQ5r-MhM_N_bWAoQsySUm7y54g5i5e3s-1oGTg5c7xFZ8nE2Bi0f9YLrc61Ccf9lgRuMFyaH6wDfOQdtsygmNdD1IzKBln386r"/>
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <span class="label-md">Est. 1924 | Mastery in Motion</span>
+                    <h1>
+                        Precision Built.<br/>Permanence Defined.
+                    </h1>
+                    <p>
+                        Operating at the intersection of heritage craftsmanship and modern performance management. We calibrate your enterprise operations with horological exactness.
+                    </p>
+                    <div class="hero-actions">
+                        <button class="btn-primary btn-large">
+                            Initialize Protocol
+                        </button>
+                        <button class="btn-text">
+                            <span class="material-symbols-outlined">play_circle</span>
+                            View Manifesto
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section>
+            <div class="container about-grid">
+                <div class="about-title">
+                    <h2 class="section-title">The Mechanical Heritage</h2>
+                    <div class="title-divider"></div>
+                </div>
+                <div class="about-content">
+                    <div class="about-text-grid">
+                        <div class="about-text">
+                            <p class="lead">
+                                Like the balance wheel of a fine chronometer, we provide the equilibrium necessary for complex organizations to thrive.
+                            </p>
+                            <p class="sub">
+                                Our methodology is rooted in the philosophy of "Kando" – a Japanese term for the simultaneous feelings of deep satisfaction and intense excitement that we experience when we encounter something of exceptional value.
+                            </p>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number">99.9%</div>
+                            <h3>Operational Accuracy</h3>
+                            <p>Calibrated through a century of service excellence and precision engineering.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Services (Bento Grid) -->
+        <section class="bg-surface-low">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle">Our Capabilities</span>
+                    <h2 class="section-heading">Integrated Precision Systems</h2>
+                </div>
+                <div class="bento-grid">
+                    <!-- Service 1 -->
+                    <div class="bento-item bento-card-light col-8">
+                        <span class="material-symbols-outlined icon-large">precision_manufacturing</span>
+                        <h3>Strategic Calibration</h3>
+                        <p>Aligning organizational gears for optimal synchronization across global divisions.</p>
+                        <ul class="service-list">
+                            <li><span></span> Resource Synchronization</li>
+                            <li><span></span> Tempo Management</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Service 2 -->
+                    <div class="bento-item bento-card-primary col-4">
+                        <div>
+                            <span class="material-symbols-outlined icon-large">query_stats</span>
+                            <h3>Metric Analysis</h3>
+                            <p>Granular oversight of technical performance benchmarks.</p>
+                        </div>
+                        <a class="link-explore" href="#">EXPLORE METRICS <span class="material-symbols-outlined">arrow_forward</span></a>
+                    </div>
+                    
+                    <!-- Service 3 -->
+                    <div class="bento-item bento-card-light col-4">
+                        <span class="material-symbols-outlined icon-large">verified_user</span>
+                        <h3>Integrity Audit</h3>
+                        <p>Validating the structural permanence of operational workflows.</p>
+                    </div>
+                    
+                    <!-- Service 4 -->
+                    <div class="bento-item bento-card-highest col-8">
+                        <div class="bento-item-flex">
+                            <h3>Chronos Academy</h3>
+                            <p>Upskilling your workforce in the art of precision management through immersive workshops.</p>
+                            <button class="btn-outline">LEARN MORE</button>
+                        </div>
+                        <div class="bento-item-img">
+                            <img alt="Workshop group" data-alt="Professional diverse corporate team engaged in a focused workshop session in a bright minimalist room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsmCxa7Qg9APjG0FtGY7jFJlt8LiIE0JKlEj1s6aT9m-hXYBMpcOl4W_b5dV9RdVYw1lY_w774Oia1g1ljWs7t0mB-9aI_VEsNF0cZZoZ_o1-8GYz8OGC0q5WhiJKXxvGrPYToYBvUVhtozfUHwqYew4ILIoYBxa7uU_z4zX8aRNyWRFj540Wsoz0zS_Y0Zgw45QxqszgS5OYQiK0SvuTtSSLrowA6ydG0W5B86Dfvlyaf0DIdqaYKQqQkym60xXEfIfZKxNSWXnHk"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- News Feed -->
+        <section>
+            <div class="container">
+                <div class="news-header">
+                    <div>
+                        <span class="section-subtitle">Technical Bulletin</span>
+                        <h2 class="section-heading">Precision Insights</h2>
+                    </div>
+                    <button class="btn-archive">Archive</button>
+                </div>
+                <div class="news-grid" id="news-feed-container">
+                    <!-- Card 1 -->
+                    <article class="news-card">
+                        <div class="news-img-wrapper">
+                            <div class="news-img-overlay"></div>
+                            <img alt="Corporate research" data-alt="Macro photo of a mechanical watch movement with brass gears and silver components under cool studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDG-vikSBkq6Yf-SGdIE5cMLJsRokmzGaI_wd4DFGXfv2GfGdL8E1VIGTHigrJDp5vqz1zzkm20BpG1huZWnLuaSaEWB3XXhw6mgTIIm9uPyLLC6CWtyDAtfFivQUtKAFes1MCzd0KKis2qpwvWxAaEn_w42M-6SPaaMSYL3GNo9v7IYQwCX5FgKNq8nwv4vyic5og6_tLkbjyw-95kML55UDB0S81whv3hhf8WiB8jMp2vRALfxEXHYBaWFHdThsJQzVn8Vq7DXP6K"/>
+                        </div>
+                        <div class="news-info">
+                            <span class="label-md">OCT 24, 2024</span>
+                            <h3>The Physics of Peak Performance</h3>
+                            <p>A deep dive into the friction coefficients of modern workflow automation.</p>
+                        </div>
+                    </article>
+                    
+                    <!-- Card 2 -->
+                    <article class="news-card">
+                        <div class="news-img-wrapper">
+                            <div class="news-img-overlay"></div>
+                            <img alt="Data screen" data-alt="Digital dashboard displaying complex data visualizations and financial charts on a clean dark interface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4ZKw7_KLmJ8FL9wzqSuvpFs697nQM52PVVLdurFRDO_tKVghijLQ22AnwS91ZDDeGiG0Gh4iqLX6m8r5e3rEtOp_U6t2aQ1lFVb1AGCwNS56-eSUqN3zD3epQLxy7isu7-5KsxQfv6zXW_Tgn4Tmt9lfLwWcqtHP8WxsMGgEqWWrk7AT2vRBkBYKLm04QvcX94mwHQgaNMmP6q40wAVakDDz9_H19zi1OjrY5kRcAUuXyV4fIPcXVlBwWpOwF2vRwFlyQ9iN-wPLm"/>
+                        </div>
+                        <div class="news-info">
+                            <span class="label-md">OCT 18, 2024</span>
+                            <h3>Digital Chronometers</h3>
+                            <p>Scaling real-time management tools for distributed global enterprises.</p>
+                        </div>
+                    </article>
+                    
+                    <!-- Card 3 -->
+                    <article class="news-card">
+                        <div class="news-img-wrapper">
+                            <div class="news-img-overlay"></div>
+                            <img alt="Modern building" data-alt="Exterior of a sharp geometric skyscraper reflecting a clear blue sky with crisp architectural lines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgG-7UuHviRVEtVEeFADBzopt8ylg8Lw2a83VIRBVo_M4BY0jBezqwmnO4NgbrdnvkLoy-DFZsOwlC3lblPqkPdM_mQm6_qLG22fIX-PkT8jwykptqqSv6ZkYlNzwc4NfAmUmRUQmTnzm1yNApqy_akn71J4cz10aw9s_65DbQ0ZwR3zyB4HMpRJ3k8AOI3PmIaExEA-rZVtwdmVeAqK4NAEnyIvigBrSaxmcSkuDj7hy4vUMt820BO-vSLv66p1HUUW6DrodHTA39"/>
+                        </div>
+                        <div class="news-info">
+                            <span class="label-md">OCT 12, 2024</span>
+                            <h3>Quarterly Protocol Review</h3>
+                            <p>Refining our core service standards for the upcoming fiscal cycle.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="bg-surface-high">
+            <div class="container testimonial-container">
+                <span class="material-symbols-outlined icon-quote">format_quote</span>
+                <div class="testimonial-content">
+                    <p class="testimonial-text">
+                        "The level of detail Chronos brings to service management is unparalleled. They don't just manage; they calibrate your entire organization."
+                    </p>
+                    <div class="testimonial-author">
+                        <h4>Alexander Thorne</h4>
+                        <p>CEO, Meridian Logistics</p>
+                    </div>
+                </div>
+                <div class="brands">
+                    <span>LUMINA</span>
+                    <span>AXON</span>
+                    <span>VORTEX</span>
+                    <span>NOVA</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div>
+                <div class="footer-logo">Chronos Service</div>
+                <p class="footer-desc">
+                    Setting the standard for precision-led service management since 1924. Calibrated excellence for the modern age.
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <a href="#">Corporate Info</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+            <div class="footer-col">
+                <h4>Protocol Office</h4>
+                <p>
+                    24 Horology Row<br/>
+                    Geneva, Switzerland
+                </p>
+                <div class="social-links">
+                    <span class="material-symbols-outlined">share</span>
+                    <span class="material-symbols-outlined">alternate_email</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>
+                © 2024 Precision Service Management. All rights reserved.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
