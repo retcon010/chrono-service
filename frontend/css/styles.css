@@ -1,10 +1,12 @@
+/*Navbar*/
+
 @import url('https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&display=swap');
 
 *{
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background-color: white;
+  
 }
 
 li, a, button {
@@ -54,4 +56,79 @@ button {
 
 button:hover {
   background-color: rgba(0,136,169,0.8);
+}
+
+/*Footer*/
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer {
+  background-color: lightgray;
+  padding: 35px 0;
+}
+
+.footer-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.footer-links {
+  width: 25%;
+  padding: 0 15px;
+}
+
+.footer-links h4 {
+  font-size: 15px;
+  color: black;
+  margin-bottom: 25px;
+  font-weight: 400;
+  border-bottom: 2px solid blue;
+  padding-bottom: 10px;
+  display: inline-block;
+}
+
+hr {
+  margin: 20px;
+}
+
+.footer-links, ul, li, a {
+  font-size: 13;
+  list-style: none;
+  text-decoration: none;
+  color: black;
+  display: block;
+  margin-bottom: 5px;
+  transition: all .3s ease;
+}
+
+.footer-links ul li a:hover {
+  color: white;
+  padding-left: 6px;
+}
+
+.bottomtext {
+    font-size: 13;
+  list-style: none;
+  text-decoration: none;
+  color: black;
+  display: block;
+  margin-bottom: 5px;
+  transition: all .3s ease;
+}
+
+.footer-links ul li a:hover {
+  color: white;
+  padding-left: 6px;
+}
+
+.social-links a {
+  display: inline-block;
+  min-height: 40px;
+}
+
+h5 {
+  text-align: center;
 }
