@@ -9,11 +9,34 @@
   
 }
 
-li, a, button {
+:root {
+  --color-primary: #456084;
+  --color-secondary: #516176;
+  --color-tertiary: #DBE4E7;
+  --color-neutral: #F1F4F6;
+  --color-main: #F8F9FB;
+}
+
+html, body {
+  height: 100%;
+}
+
+.site {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1; 
+}
+
+
+li, a, button, h4, h5{
   font-family: "Afacad", sans-serif;
   font-weight: 500;
   font-size: 16px;
-  color: black;
+  color: white;
   text-decoration: none;
 }
 
@@ -26,6 +49,7 @@ header {
 
 .logo{
   cursor: pointer;
+  color: var(--color-primary);
 }
 
 .nav_links {
@@ -42,12 +66,12 @@ header {
 }
 
 .nav_links li a:hover {
-  color: blue;
+  color: var(--color-primary);
 }
 
 button {
   padding: 9px 25px;
-  background-color: rgba(0,136,169,1);
+  background-color: var(--color-primary);
   border: none;
   border-radius: 50px;
   cursor: pointer;
@@ -55,7 +79,7 @@ button {
 }
 
 button:hover {
-  background-color: rgba(0,136,169,0.8);
+  background-color: var(--color-secondary);
 }
 
 /*Footer*/
@@ -66,7 +90,7 @@ button:hover {
 }
 
 .footer {
-  background-color: lightgray;
+  background-color: var(--color-neutral);
   padding: 35px 0;
 }
 
@@ -82,12 +106,15 @@ button:hover {
 
 .footer-links h4 {
   font-size: 15px;
-  color: black;
   margin-bottom: 25px;
-  font-weight: 400;
-  border-bottom: 2px solid blue;
+  font-weight: 700;
+  border-bottom: 2px solid var(--color-secondary);
   padding-bottom: 10px;
   display: inline-block;
+}
+
+h4 {
+  color: var(--color-primary);
 }
 
 hr {
@@ -131,4 +158,9 @@ hr {
 
 h5 {
   text-align: center;
+  color: var(--color-primary);
+}
+
+main {
+  background-color: var(--color-main);
 }
