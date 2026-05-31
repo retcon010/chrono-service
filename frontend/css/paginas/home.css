@@ -84,6 +84,7 @@
   font-weight: 500;
   font-size: 15px;
   border-radius: 4px;
+  text-decoration: none;
   transition: background-color 0.3s;
 }
 
@@ -92,12 +93,13 @@
 }
 
 .btn-text {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 8px;
   color: #ffffff;
   font-weight: 600;
   font-size: 15px;
+  text-decoration: none;
   transition: opacity 0.3s;
 }
 
@@ -197,10 +199,10 @@
   }
 }
 
-/* --- SECTION: OUR CAPABILITIES --- */
 
+/* --- SECTION: OUR CAPABILITIES --- */
 .capabilities-section {
-  background-color: var(--color-main); /* Tu color #F8F9FB */
+  background-color: var(--color-main);
   padding: 80px 10%;
   width: 100%;
 }
@@ -210,7 +212,6 @@
   margin: 0 auto;
 }
 
-/* Encabezado */
 .capabilities-header {
   margin-bottom: 45px;
 }
@@ -235,14 +236,11 @@
 /* --- REJILLA BENTO GRID --- */
 .capabilities-grid {
   display: grid;
-  /* Creamos 3 columnas del mismo tamaño */
   grid-template-columns: repeat(3, 1fr);
-  /* Definimos las filas de manera automática según contenido */
   grid-auto-rows: minmax(260px, auto);
   gap: 30px;
 }
 
-/* Estilos comunes de las tarjetas */
 .cap-card {
   border-radius: 4px;
   padding: 40px;
@@ -269,8 +267,6 @@
 }
 
 /* --- VARIACIONES DE TARJETA --- */
-
-/* Tarjetas Blancas (1 y 3) */
 .card-white {
   background-color: #ffffff;
   color: #000000;
@@ -284,10 +280,10 @@
   color: var(--color-secondary);
 }
 
-/* Lista de viñetas en tarjeta 1 */
 .card-list {
   margin-top: 25px;
   list-style: none;
+  padding-left: 0; /* Corrección para limpiar padding por defecto */
 }
 
 .card-list li {
@@ -306,9 +302,8 @@
   font-size: 18px;
 }
 
-/* Tarjeta Azul Destacada (2) */
 .card-blue {
-  background-color: var(--color-primary); /* Tu color #456084 */
+  background-color: var(--color-primary);
   color: #ffffff;
 }
 
@@ -319,7 +314,7 @@
 .card-blue p {
   color: var(--color-neutral);
   opacity: 0.9;
-  margin-bottom: auto; /* Empuja el enlace hacia abajo del todo */
+  margin-bottom: auto; /* Empuja el enlace hacia abajo */
 }
 
 .card-link {
@@ -331,6 +326,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  text-decoration: none;
   transition: opacity 0.3s;
 }
 
@@ -338,9 +334,8 @@
   opacity: 0.8;
 }
 
-/* Tarjeta Gris Horizontal (4) */
 .card-grey {
-  background-color: var(--color-tertiary); /* Color suave #DBE4E7 */
+  background-color: var(--color-tertiary);
   color: #000000;
 }
 
@@ -353,23 +348,19 @@
   margin-bottom: 25px;
 }
 
-/* --- COMPORTAMIENTOS TAMAÑO GRID (BENTO EXCLUSIVO) --- */
-
-/* Tarjeta 1: Ocupa 2 columnas de ancho */
+/* --- COMPORTAMIENTOS BENTO GRID --- */
 .card-wide {
   grid-column: span 2;
 }
 
-/* Tarjeta 2: Ocupa 2 filas de alto y se posiciona en la tercera columna */
 .card-tall {
   grid-column: 3;
   grid-row: span 2;
 }
 
-/* Tarjeta 4: Ocupa 2 columnas de ancho abajo */
 .card-horizontal {
   grid-column: span 2;
-  flex-direction: row; /* Coloca el texto a la izquierda y la imagen a la derecha */
+  flex-direction: row; 
   align-items: center;
   gap: 30px;
 }
@@ -387,11 +378,10 @@
 .academy-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ajusta la imagen recortándola de forma estética */
+  object-fit: cover;
   border-radius: 4px;
 }
 
-/* Botón blanco de la academia */
 .btn-academy {
   display: inline-block;
   padding: 10px 22px;
@@ -400,6 +390,7 @@
   font-weight: 600;
   font-size: 14px;
   border-radius: 2px;
+  text-decoration: none;
   transition: background-color 0.3s;
 }
 
@@ -407,14 +398,13 @@
   background-color: var(--color-neutral);
 }
 
-/* --- RESPONSIVE DESIGN --- */
+/* --- RESPONSIVE CAPABILITIES --- */
 @media (max-width: 950px) {
   .capabilities-grid {
-    grid-template-columns: 1fr; /* Pasa a una sola columna en pantallas pequeñas */
+    grid-template-columns: 1fr;
     grid-auto-rows: auto;
   }
   
-  /* Deshacemos las fusiones de celdas en móvil */
   .card-wide, .card-tall, .card-horizontal {
     grid-column: auto;
     grid-row: auto;
@@ -422,12 +412,14 @@
 
   .card-horizontal {
     flex-direction: column;
+    align-items: flex-start;
   }
 }
 
+
 /* --- SECTION: PRECISION INSIGHTS --- */
 .insights-section {
-  background-color: var(--color-main); /* #F8F9FB */
+  background-color: var(--color-main);
   padding: 80px 10%;
   width: 100%;
 }
@@ -437,7 +429,6 @@
   margin: 0 auto;
 }
 
-/* Alineación de la cabecera */
 .insights-header {
   display: flex;
   justify-content: space-between;
@@ -452,6 +443,7 @@
   color: var(--color-primary);
   border-bottom: 2px solid var(--color-primary);
   padding-bottom: 2px;
+  text-decoration: none;
   transition: opacity 0.3s;
 }
 
@@ -459,18 +451,16 @@
   opacity: 0.8;
 }
 
-/* Estructura de las 3 columnas */
 .insights-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 35px;
 }
 
-/* Estilos de cada tarjeta de artículo */
 .news-card {
   display: flex;
   flex-direction: column;
-  background: transparent; /* Sin fondo, igual que en tu captura */
+  background: transparent;
 }
 
 .card-thumb {
@@ -484,11 +474,10 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(100%); /* Efecto blanco y negro como tu captura */
+  filter: grayscale(100%);
   transition: filter 0.4s ease;
 }
 
-/* Opcional: Que recupere el color sutilmente al pasar el ratón */
 .news-card:hover .card-thumb img {
   filter: grayscale(30%);
 }
@@ -518,10 +507,10 @@
 .card-text {
   font-size: 15px;
   line-height: 1.5;
-  color: var(--color-secondary); /* #516176 */
+  color: var(--color-secondary);
 }
 
-/* --- RESPONSIVE --- */
+/* --- RESPONSIVE INSIGHTS --- */
 @media (max-width: 900px) {
   .insights-header {
     flex-direction: column;
@@ -530,14 +519,15 @@
   }
   
   .insights-grid {
-    grid-template-columns: 1fr; /* Colapsa a una sola columna en móviles */
+    grid-template-columns: 1fr;
     gap: 40px;
   }
 }
 
+
 /* --- TESTIMONIAL & PARTNERS SECTION --- */
 .testimonial-partners {
-  background-color: #e3ebf0; /* Fondo azul grisáceo suave exacto */
+  background-color: #e3ebf0;
   padding: 90px 10%;
   display: flex;
   justify-content: center;
@@ -553,27 +543,25 @@
   align-items: center;
 }
 
-/* Icono estilizado de comillas */
 .quote-icon {
   font-size: 36px;
-  color: #2b4360; /* Azul corporativo oscuro */
+  color: #2b4360;
   margin-bottom: 25px;
   opacity: 0.95;
 }
 
-/* Cuerpo de la cita bibliográfica */
 .testimonial-text {
   font-family: "Afacad", sans-serif;
   font-size: 26px;
   font-weight: 400;
   font-style: italic;
-  color: #334155; /* Texto oscuro suave para alta legibilidad */
+  color: #334155;
   line-height: 1.45;
-  margin: 0 0 30px 0;
+  /* Corrección de márgenes laterales para evitar herencias de bloque nativas */
+  margin: 0 auto 30px auto; 
   letter-spacing: -0.3px;
 }
 
-/* Firma del autor */
 .testimonial-author h4 {
   font-family: "Afacad", sans-serif;
   font-size: 16px;
@@ -586,21 +574,20 @@
   font-family: "Afacad", sans-serif;
   font-size: 11px;
   font-weight: 700;
-  color: #516a85; /* Tono intermedio para jerarquía */
+  color: #516a85;
   letter-spacing: 1px;
   text-transform: uppercase;
-  margin-bottom: 65px; /* Espacio extra antes de los logos */
+  margin-bottom: 65px;
 }
 
-/* Grid horizontal para logotipos corporativos */
 .partners-logo-grid {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 60px; /* Separación simétrica de las firmas */
+  gap: 60px;
   flex-wrap: wrap;
   width: 100%;
-  border-top: 1px solid rgba(0, 0, 0, 0.04); /* Línea de división casi invisible opcional */
+  border-top: 1px solid rgba(0, 0, 0, 0.04);
   padding-top: 20px;
 }
 
@@ -608,18 +595,17 @@
   font-family: "Afacad", sans-serif;
   font-size: 20px;
   font-weight: 600;
-  color: #94a3b8; /* Gris muted idéntico para simular marcas */
+  color: #94a3b8;
   letter-spacing: 2px;
   user-select: none;
   transition: color 0.2s ease;
 }
 
-/* Pequeño extra interactivo elegante */
 .partner-logo-item:hover {
   color: #475569;
 }
 
-/* Ajuste responsivo para pantallas móviles o tablets en DeX */
+/* --- RESPONSIVE TESTIMONIAL --- */
 @media (max-width: 640px) {
   .testimonial-text {
     font-size: 20px;
