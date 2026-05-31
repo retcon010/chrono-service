@@ -1,0 +1,20 @@
+[
+  {
+    "fecha": "24 OCT, 2024",
+    "titulo": "Maestría en Movimiento",
+    "descripcion": "Implementación de nuevos protocolos técnicos para la alineación y calibración de mecanismos de alta complejidad.",
+    "imagen": "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=600"
+  },
+  {
+    "fecha": "18 OCT, 2024",
+    "titulo": "Cronometría Digital",
+    "descripcion": "Escalado de herramientas de gestión en tiempo real para infraestructuras empresariales globales distribuidas.",
+    "imagen": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=600"
+  },
+  {
+    "fecha": "12 OCT, 2024",
+    "titulo": "Revisión de Protocolos",
+    "descripcion": "Perfeccionamiento de nuestros estándares de servicio principales para el próximo ciclo fiscal estratégico.",
+    "imagen": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=600"
+  }
+]
