@@ -1,30 +1,10 @@
-/* ==========================================
-   IMPORTACIÓN DE TIPOGRAFÍA EXTERNA
-   ========================================== */
-/* Se importa la fuente "Afacad" desde Google Fonts
-   con distintos pesos para uso en toda la web */
 @import url('https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&display=swap');
 
-/* ==========================================
-   VARIABLES GLOBALES DEL PROYECTO
-   ========================================== */
-/* Definición de variables CSS reutilizables
-   para mantener coherencia en colores y facilitar cambios */
-
 :root {
-
-  /* Color principal (elementos destacados, botones, branding) */
-  --color-primary: #456084;
-
-  /* Color secundario (textos secundarios, hover, detalles UI) */
-  --color-secondary: #516176;
-
-  /* Color terciario (bordes, separadores, fondos suaves) */
-  --color-tertiary: #DBE4E7;
-
-  /* Color neutro (fondos claros de componentes) */
-  --color-neutral: #F1F4F6;
-
-  /* Color base principal del fondo general de la web */
-  --color-main: #F8F9FB;
+  /* Paleta de colores corporativa para Chrono Service */
+  --color-primary: #456084;   /* Azul principal: utilizado para elementos destacados, botones y enlaces activos */
+  --color-secondary: #516176; /* Azul grisáceo: ideal para textos secundarios, descripciones y estados hover */
+  --color-tertiary: #DBE4E7;  /* Gris claro azulado: usado para líneas divisorias (<hr>) y bordes tenues */
+  --color-neutral: #F1F4F6;   /* Fondo neutro intermedio: perfecto para tarjetas, contenedores y bloques de contenido */
+  --color-main: #F8F9FB;      /* Fondo principal de la web: tono casi blanco para mantener una estética limpia */
 }
