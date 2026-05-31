@@ -5,6 +5,10 @@
   width: 100%;
 }
 
+.section-subtitle, portafolio-lead {
+  margin-top: 70px;
+}
+
 .portfolio-container {
   max-width: 1200px;
   margin: 0 auto;
