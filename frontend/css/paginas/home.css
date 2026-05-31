@@ -196,3 +196,231 @@
     gap: 40px;
   }
 }
+
+/* --- SECTION: OUR CAPABILITIES --- */
+
+.capabilities-section {
+  background-color: var(--color-main); /* Tu color #F8F9FB */
+  padding: 80px 10%;
+  width: 100%;
+}
+
+.capabilities-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Encabezado */
+.capabilities-header {
+  margin-bottom: 45px;
+}
+
+.section-subtitle {
+  font-family: "Afacad", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  color: var(--color-secondary);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.section-title {
+  font-family: "Afacad", sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #1c2d42;
+}
+
+/* --- REJILLA BENTO GRID --- */
+.capabilities-grid {
+  display: grid;
+  /* Creamos 3 columnas del mismo tamaño */
+  grid-template-columns: repeat(3, 1fr);
+  /* Definimos las filas de manera automática según contenido */
+  grid-auto-rows: minmax(260px, auto);
+  gap: 30px;
+}
+
+/* Estilos comunes de las tarjetas */
+.cap-card {
+  border-radius: 4px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-family: "Afacad", sans-serif;
+}
+
+.cap-card h3 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.cap-card p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.card-icon {
+  font-size: 28px;
+  margin-bottom: 25px;
+}
+
+/* --- VARIACIONES DE TARJETA --- */
+
+/* Tarjetas Blancas (1 y 3) */
+.card-white {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.card-white .card-icon {
+  color: var(--color-primary);
+}
+
+.card-white p {
+  color: var(--color-secondary);
+}
+
+/* Lista de viñetas en tarjeta 1 */
+.card-list {
+  margin-top: 25px;
+  list-style: none;
+}
+
+.card-list li {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-primary);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card-list li::before {
+  content: "•";
+  color: var(--color-primary);
+  font-size: 18px;
+}
+
+/* Tarjeta Azul Destacada (2) */
+.card-blue {
+  background-color: var(--color-primary); /* Tu color #456084 */
+  color: #ffffff;
+}
+
+.card-blue .card-icon {
+  color: var(--color-tertiary);
+}
+
+.card-blue p {
+  color: var(--color-neutral);
+  opacity: 0.9;
+  margin-bottom: auto; /* Empuja el enlace hacia abajo del todo */
+}
+
+.card-link {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 1px;
+  margin-top: 30px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: opacity 0.3s;
+}
+
+.card-link:hover {
+  opacity: 0.8;
+}
+
+/* Tarjeta Gris Horizontal (4) */
+.card-grey {
+  background-color: var(--color-tertiary); /* Color suave #DBE4E7 */
+  color: #000000;
+}
+
+.card-grey h3 {
+  color: #1c2d42;
+}
+
+.card-grey p {
+  color: var(--color-secondary);
+  margin-bottom: 25px;
+}
+
+/* --- COMPORTAMIENTOS TAMAÑO GRID (BENTO EXCLUSIVO) --- */
+
+/* Tarjeta 1: Ocupa 2 columnas de ancho */
+.card-wide {
+  grid-column: span 2;
+}
+
+/* Tarjeta 2: Ocupa 2 filas de alto y se posiciona en la tercera columna */
+.card-tall {
+  grid-column: 3;
+  grid-row: span 2;
+}
+
+/* Tarjeta 4: Ocupa 2 columnas de ancho abajo */
+.card-horizontal {
+  grid-column: span 2;
+  flex-direction: row; /* Coloca el texto a la izquierda y la imagen a la derecha */
+  align-items: center;
+  gap: 30px;
+}
+
+.academy-info {
+  flex: 1.2;
+}
+
+.academy-image {
+  flex: 1;
+  height: 100%;
+  min-height: 160px;
+}
+
+.academy-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ajusta la imagen recortándola de forma estética */
+  border-radius: 4px;
+}
+
+/* Botón blanco de la academia */
+.btn-academy {
+  display: inline-block;
+  padding: 10px 22px;
+  background-color: #ffffff;
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 2px;
+  transition: background-color 0.3s;
+}
+
+.btn-academy:hover {
+  background-color: var(--color-neutral);
+}
+
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 950px) {
+  .capabilities-grid {
+    grid-template-columns: 1fr; /* Pasa a una sola columna en pantallas pequeñas */
+    grid-auto-rows: auto;
+  }
+  
+  /* Deshacemos las fusiones de celdas en móvil */
+  .card-wide, .card-tall, .card-horizontal {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .card-horizontal {
+    flex-direction: column;
+  }
+}
