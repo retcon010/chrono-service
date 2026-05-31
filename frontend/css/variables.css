@@ -1,10 +1,30 @@
+/* ==========================================
+   IMPORTACIÓN DE TIPOGRAFÍA EXTERNA
+   ========================================== */
+/* Se importa la fuente "Afacad" desde Google Fonts
+   con distintos pesos para uso en toda la web */
 @import url('https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&display=swap');
 
+/* ==========================================
+   VARIABLES GLOBALES DEL PROYECTO
+   ========================================== */
+/* Definición de variables CSS reutilizables
+   para mantener coherencia en colores y facilitar cambios */
+
 :root {
-  /* Tus variables de paleta de colores */
+
+  /* Color principal (elementos destacados, botones, branding) */
   --color-primary: #456084;
+
+  /* Color secundario (textos secundarios, hover, detalles UI) */
   --color-secondary: #516176;
+
+  /* Color terciario (bordes, separadores, fondos suaves) */
   --color-tertiary: #DBE4E7;
+
+  /* Color neutro (fondos claros de componentes) */
   --color-neutral: #F1F4F6;
+
+  /* Color base principal del fondo general de la web */
   --color-main: #F8F9FB;
 }
