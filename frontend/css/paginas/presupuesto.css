@@ -1,14 +1,11 @@
-/* =========================================================
-   VALUATION PAGE LAYOUT
-   Estilos generales de la cabecera de la página de presupuesto
-   ========================================================= */
-
+/* ==========================================================================
+   DISEÑO DE LA INTRODUCCIÓN (PÁGINA DE VALORACIÓN)
+   ========================================================================== */
 .valuation-intro {
   padding: 60px 10% 20px 10%;
   background-color: var(--color-main);
 }
 
-/* Subtítulo de sección (texto pequeño superior) */
 .section-subtitle {
   font-family: "Afacad", sans-serif;
   font-size: 12px;
@@ -18,7 +15,6 @@
   margin-bottom: 10px;
 }
 
-/* Título principal de la sección */
 .section-title {
   font-family: "Afacad", sans-serif;
   font-size: 40px;
@@ -29,7 +25,6 @@
   margin-bottom: 20px;
 }
 
-/* Texto descriptivo introductorio */
 .section-lead {
   font-family: "Afacad", sans-serif;
   font-size: 16px;
@@ -38,24 +33,16 @@
   line-height: 1.5;
 }
 
-/* =========================================================
-   GRID PRINCIPAL DEL FORMULARIO + RESUMEN
-   Columna izquierda: pasos
-   Columna derecha: recibo/resumen
-   ========================================================= */
-
+/* CONTENEDOR GRID: Divide el formulario y el recibo lateral */
 .budget-grid-container {
   display: grid;
-  grid-template-columns: 1.6fr 1fr;
+  grid-template-columns: 1.6fr 1fr; /* El formulario toma más peso visual que el recibo */
   gap: 40px;
   padding: 20px 10% 80px 10%;
-  align-items: flex-start;
+  align-items: flex-start; /* Evita que el recibo se estire verticalmente de forma artificial */
 }
 
-/* =========================================================
-   TARJETAS DE PASOS (STEP CARDS)
-   ========================================================= */
-
+/* DISEÑO DE TARJETAS POR PASOS (ESTRUCTURA DEL FORMULARIO) */
 .step-card {
   background: #ffffff;
   border-radius: 6px;
@@ -67,7 +54,7 @@
   border: 1px solid #eef2f6;
 }
 
-/* Número/badge circular del paso */
+/* Indicador numérico circular izquierdo */
 .step-badge {
   background: #e1e7ec;
   color: #1c2d42;
@@ -80,15 +67,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
+  flex-shrink: 0; /* Impide que el círculo se deforme al reducirse el espacio */
 }
 
-/* Contenido interno del paso */
 .step-content {
   flex: 1;
 }
 
-/* Título dentro de cada paso */
 .step-content h3 {
   font-family: "Afacad", sans-serif;
   font-size: 20px;
@@ -96,7 +81,6 @@
   margin-bottom: 15px;
 }
 
-/* Descripción dentro de cada paso */
 .step-desc {
   font-family: "Afacad", sans-serif;
   font-size: 13px;
@@ -104,27 +88,21 @@
   margin-bottom: 20px;
 }
 
-/* =========================================================
-   FORMULARIOS DE CONTACTO
-   ========================================================= */
-
-/* Fila de inputs (dos columnas flexibles) */
+/* PASO DE VALIDACIÓN DE ENTRADAS DE CONTACTO */
 .input-group-row {
   display: flex;
   gap: 20px;
-  flex-wrap: wrap; /* Permite salto de línea en pantallas medias */
+  flex-wrap: wrap; /* Impide el colapso horizontal de los campos en pantallas intermedias */
 }
 
-/* Contenedor de cada input + label */
 .input-wrapper {
   flex: 1;
-  min-width: 200px;
+  min-width: 200px; /* Determina el ancho mínimo antes de que el campo salte de línea */
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
-/* Label del input */
 .input-wrapper label {
   font-family: "Afacad", sans-serif;
   font-size: 11px;
@@ -134,7 +112,6 @@
   letter-spacing: 0.5px;
 }
 
-/* Input base */
 .input-wrapper input {
   font-family: "Afacad", sans-serif;
   padding: 12px;
@@ -147,24 +124,19 @@
   transition: border-color 0.2s;
 }
 
-/* Estado focus del input */
 .input-wrapper input:focus {
   border-color: var(--color-primary);
 }
 
-/* Mensaje de error */
 .error-msg {
   font-family: "Afacad", sans-serif;
   font-size: 11px;
   color: #d93838;
   margin-top: 10px;
-  min-height: 14px;
+  min-height: 14px; /* Reserva espacio estructural para evitar saltos bruscos cuando aparece el mensaje */
 }
 
-/* =========================================================
-   SELECT (STEP 01)
-   ========================================================= */
-
+/* MENÚ DESPLEGABLE (PASO 01) */
 .base-tier-label {
   font-family: "Afacad", sans-serif;
   font-size: 10px;
@@ -175,7 +147,6 @@
   margin-bottom: 8px;
 }
 
-/* Select personalizado */
 .select-style-wrapper select {
   font-family: "Afacad", sans-serif;
   width: 100%;
@@ -186,16 +157,12 @@
   font-size: 15px;
   color: #1c2d42;
   cursor: pointer;
-  appearance: none; /* elimina estilo nativo del sistema */
+  appearance: none; /* Suprime la flecha por defecto del sistema para estilización propia */
   -webkit-appearance: none;
   -moz-appearance: none;
 }
 
-/* =========================================================
-   SLIDER (STEP 02)
-   ========================================================= */
-
-/* Cabecera del slider */
+/* DESLIZADOR RANGO DE DURACIÓN (PASO 02) */
 .duration-header {
   display: flex;
   justify-content: space-between;
@@ -203,12 +170,10 @@
   align-items: center;
 }
 
-/* Texto de cabecera */
 .duration-header span {
   font-family: "Afacad", sans-serif;
 }
 
-/* Badge de descuento */
 .discount-badge {
   font-family: "Afacad", sans-serif;
   background-color: #fce8e6;
@@ -219,14 +184,12 @@
   font-weight: 600;
 }
 
-/* Input tipo range */
 .range-slider-container input[type="range"] {
   width: 100%;
   margin-bottom: 10px;
   cursor: pointer;
 }
 
-/* Marcas del slider */
 .range-ticks {
   display: flex;
   justify-content: space-between;
@@ -235,18 +198,13 @@
   font-weight: 600;
 }
 
-/* =========================================================
-   CHECKBOX CARDS (STEP 03)
-   ========================================================= */
-
-/* Grid de opciones */
+/* CASILLAS DE SELECCIÓN DE COMPLICACIONES (PASO 03) */
 .complications-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 15px;
 }
 
-/* Card seleccionable */
 .checkbox-card {
   display: flex;
   align-items: flex-start;
@@ -258,59 +216,51 @@
   transition: background 0.2s;
 }
 
-/* Hover visual */
 .checkbox-card:hover {
   background-color: #fbfcfd;
 }
 
-/* Checkbox */
 .checkbox-card input[type="checkbox"] {
   margin-top: 4px;
   cursor: pointer;
 }
 
-/* Texto del checkbox */
 .checkbox-label-block {
   display: flex;
   flex-direction: column;
   font-family: "Afacad", sans-serif;
 }
 
-/* Título opción */
 .checkbox-label-block strong {
   font-size: 15px;
   color: #1c2d42;
 }
 
-/* Descripción secundaria */
 .sub-txt {
   font-size: 12px;
   color: #72849a;
   margin: 4px 0 6px 0;
 }
 
-/* Precio */
 .price-txt {
   font-size: 13px;
   font-weight: 600;
   color: var(--color-primary);
 }
 
-/* =========================================================
-   RECIBO / RESUMEN FIJO (COLUMNA DERECHA)
-   ========================================================= */
-
+/* ==========================================================================
+   RECIBO FLOTANTE DERECHO (BUDGET ALLOCATION)
+   ========================================================================== */
 .sticky-receipt-card {
   background: #ffffff;
   border: 1px solid #eef2f6;
   border-radius: 6px;
   padding: 40px;
   box-shadow: 0 10px 30px rgba(28,45,66,0.04);
-  position: sticky;
-  top: 40px;
+  position: sticky; /* Mantiene la tarjeta fija al hacer scroll por el formulario */
+  top: 40px;          /* Separación superior respetando el margen de navegación */
 }
 
-/* Título del resumen */
 .sticky-receipt-card h3 {
   font-family: "Afacad", sans-serif;
   font-size: 22px;
@@ -318,7 +268,6 @@
   margin-bottom: 25px;
 }
 
-/* Línea de desglose */
 .receipt-line {
   font-family: "Afacad", sans-serif;
   display: flex;
@@ -328,24 +277,20 @@
   margin-bottom: 18px;
 }
 
-/* Línea de descuento */
 .discount-line {
   color: #c53030;
 }
 
-/* Separador */
 .receipt-divider {
   height: 1px;
   background-color: #e2e8ed;
   margin: 25px 0;
 }
 
-/* Bloque total */
 .total-investment-block {
   margin-bottom: 30px;
 }
 
-/* Etiqueta del total */
 .total-title {
   font-family: "Afacad", sans-serif;
   font-size: 11px;
@@ -354,7 +299,6 @@
   letter-spacing: 1px;
 }
 
-/* Cantidad total */
 .total-amount-display {
   font-family: "Afacad", sans-serif;
   display: flex;
@@ -366,14 +310,12 @@
   margin-top: 5px;
 }
 
-/* Símbolo de moneda */
 .currency-symbol {
   font-size: 24px;
   margin-right: 4px;
   margin-top: 4px;
 }
 
-/* Botón principal */
 .btn-finalize {
   font-family: "Afacad", sans-serif;
   width: 100%;
@@ -389,12 +331,10 @@
   transition: background 0.2s;
 }
 
-/* Hover botón */
 .btn-finalize:hover {
   background-color: #1c2d42;
 }
 
-/* Badge seguridad */
 .secure-badge {
   font-family: "Afacad", sans-serif;
   display: flex;
@@ -407,10 +347,7 @@
   margin-top: 25px;
 }
 
-/* =========================================================
-   TARJETAS INFORMATIVAS PEQUEÑAS
-   ========================================================= */
-
+/* MÓDULOS DE ESTADO INFERIORES */
 .status-mini-cards {
   margin-top: 25px;
   display: flex;
@@ -418,7 +355,6 @@
   gap: 15px;
 }
 
-/* Mini card info */
 .mini-card {
   background-color: #f1f4f7;
   padding: 15px 20px;
@@ -428,13 +364,11 @@
   gap: 15px;
 }
 
-/* Icono */
 .icon-blue {
   color: #3b526e;
   font-size: 18px;
 }
 
-/* Título mini card */
 .mini-card h4 {
   font-family: "Afacad", sans-serif;
   font-size: 11px;
@@ -442,7 +376,6 @@
   color: #72849a;
 }
 
-/* Texto mini card */
 .mini-card p {
   font-family: "Afacad", sans-serif;
   font-size: 14px;
@@ -450,17 +383,12 @@
   color: #1c2d42;
 }
 
-/* =========================================================
-   PRIVACIDAD
-   ========================================================= */
-
-/* Card privacidad */
+/* PANEL DE PRIVACIDAD */
 .privacy-card {
   flex-direction: column;
   gap: 20px;
 }
 
-/* Checkbox privacidad */
 .privacy-checkbox-container {
   font-family: "Afacad", sans-serif;
   display: flex;
@@ -470,7 +398,6 @@
   color: #516176;
 }
 
-/* Botón secundario */
 .btn-secondary-custom {
   font-family: "Afacad", sans-serif;
   padding: 10px 20px;
@@ -482,54 +409,44 @@
   transition: background 0.2s, color 0.2s;
 }
 
-/* Hover botón secundario */
 .btn-secondary-custom:hover {
   background-color: #f1f5f9;
   color: #1c2d42;
 }
 
-/* =========================================================
-   RESPONSIVE DESIGN
-   ========================================================= */
-
+/* ==========================================================================
+   DISEÑO ADAPTATIVO (MEDIA QUERIES)
+   ========================================================================== */
 @media (max-width: 990px) {
-
-  /* Layout pasa a una sola columna */
   .budget-grid-container { 
-    grid-template-columns: 1fr; 
+    grid-template-columns: 1fr; /* Coloca el panel del recibo abajo del formulario */
     padding: 10px 5% 60px 5%;
   }
   
-  /* Ajuste intro */
   .valuation-intro {
     padding: 40px 5% 10px 5%;
   }
 
-  /* Recibo deja de ser sticky */
   .sticky-receipt-card {
-    position: static;
+    position: static; /* El recibo pierde la propiedad flotante y se integra en el flujo común */
     margin-top: 20px;
     padding: 30px 20px;
   }
 }
 
 @media (max-width: 600px) {
-
-  /* Cards en columna en móvil */
   .step-card {
-    flex-direction: column;
+    flex-direction: column; /* El dígito del paso se sitúa sobre el cuerpo del texto en móviles */
     gap: 15px;
     padding: 25px 20px;
   }
 
-  /* Badge más pequeño */
   .step-badge {
     width: 28px;
     height: 28px;
     font-size: 12px;
   }
   
-  /* Inputs en columna */
   .input-group-row {
     flex-direction: column;
     gap: 15px;
