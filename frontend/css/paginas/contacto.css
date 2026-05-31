@@ -17,6 +17,7 @@ body {
 }
 
 .subtitle {
+  font-family: "Afacad", sans-serif;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 1.5px;
@@ -26,6 +27,7 @@ body {
 }
 
 .contact-hero h2 {
+  font-family: "Afacad", sans-serif;
   font-size: 42px;
   font-weight: 700;
   color: #0f172a;
@@ -37,6 +39,7 @@ body {
 }
 
 .description {
+  font-family: "Afacad", sans-serif;
   font-size: 15px;
   line-height: 1.6;
   color: #475569;
@@ -63,12 +66,14 @@ body {
 }
 
 .form-card h3 {
+  font-family: "Afacad", sans-serif;
   font-size: 22px;
   color: #0f172a;
   margin-bottom: 6px;
 }
 
 .form-sub {
+  font-family: "Afacad", sans-serif;
   font-size: 13px;
   color: #64748b;
   margin-bottom: 30px;
@@ -87,6 +92,7 @@ body {
 }
 
 .form-group label {
+  font-family: "Afacad", sans-serif;
   font-size: 11px;
   font-weight: 700;
   color: #334155;
@@ -97,6 +103,7 @@ body {
 .form-group input, 
 .form-group select, 
 .form-group textarea {
+  font-family: "Afacad", sans-serif; /* Fuerza la herencia de fuente */
   padding: 12px 0;
   border: none;
   border-bottom: 1px solid #cbd5e1;
@@ -107,13 +114,26 @@ body {
   transition: border-color 0.2s;
 }
 
+.form-group textarea {
+  resize: vertical; /* Evita que rompan el ancho de la tarjeta */
+  min-height: 80px;
+}
+
 .form-group input:focus, 
 .form-group select:focus, 
 .form-group textarea:focus {
   border-bottom: 1px solid #2b4360;
 }
 
+/* Contenedor del botón para prescindir de floats peligrosos */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
 .btn-dispatch {
+  font-family: "Afacad", sans-serif;
   background-color: #2b4360;
   color: #ffffff;
   border: none;
@@ -123,7 +143,6 @@ body {
   letter-spacing: 1px;
   border-radius: 2px;
   cursor: pointer;
-  float: right;
   transition: background-color 0.2s;
 }
 
@@ -141,6 +160,7 @@ body {
 }
 
 .info-label {
+  font-family: "Afacad", sans-serif;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 1px;
@@ -149,6 +169,7 @@ body {
 }
 
 .info-data {
+  font-family: "Afacad", sans-serif;
   display: flex;
   align-items: flex-start;
   gap: 15px;
@@ -171,6 +192,17 @@ body {
   font-size: 16px;
 }
 
+.sidebar-footer-icons a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.sidebar-footer-icons a:hover {
+  color: #2b4360;
+}
+
+
 /* --- SECCIÓN DEL MAPA DINÁMICO --- */
 .map-section {
   background-color: #e3ebf0;
@@ -191,6 +223,7 @@ body {
 }
 
 .route-panel h3 {
+  font-family: "Afacad", sans-serif;
   font-size: 24px;
   color: #1e293b;
   margin-bottom: 30px;
@@ -203,6 +236,7 @@ body {
 }
 
 .route-input-group label {
+  font-family: "Afacad", sans-serif;
   font-size: 10px;
   font-weight: 700;
   color: #516a85;
@@ -230,6 +264,7 @@ body {
 }
 
 .input-with-icon input {
+  font-family: "Afacad", sans-serif;
   border: none;
   padding: 12px 0;
   width: 100%;
@@ -239,6 +274,7 @@ body {
 }
 
 .btn-route {
+  font-family: "Afacad", sans-serif;
   background-color: #2b4360;
   color: white;
   border: none;
@@ -262,6 +298,7 @@ body {
 }
 
 .mode-btn {
+  font-family: "Afacad", sans-serif;
   background: white;
   border: none;
   flex: 1;
@@ -269,6 +306,9 @@ body {
   border-radius: 4px;
   cursor: pointer;
   color: #64748b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .mode-btn.active {
@@ -278,6 +318,7 @@ body {
 
 /* Espacio interactivo para los resultados */
 .route-result-box {
+  font-family: "Afacad", sans-serif;
   margin-top: 20px;
   background: white;
   padding: 15px;
@@ -294,7 +335,7 @@ body {
 #map {
   width: 100%;
   height: 100%;
-  background-color: #0b1d28; /* Color de fallback oscuro */
+  background-color: #0b1d28; 
 }
 
 @keyframes fadeIn {
@@ -307,16 +348,19 @@ body {
   .container-grid, .map-layout-grid {
     grid-template-columns: 1fr;
   }
+  .info-sidebar {
+    padding-left: 0;
+    margin-top: 20px;
+  }
   #map { min-height: 350px; }
 }
 
 .transport-modes .mode-btn i {
   font-size: 16px;
   display: inline-block;
-  /* Esto asegura que el icono tenga color y no se pinte blanco */
   color: #64748b; 
 }
 
 .transport-modes .mode-btn.active i {
-  color: #2b4360; /* Color azul oscuro para el modo seleccionado */
+  color: #2b4360; 
 }
