@@ -1,21 +1,21 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Determinamos la ruta base dependiendo de la ubicación del archivo HTML
-  const rutaBase = window.location.pathname.includes('/views/') ? '../' : '';
+  // Determine the base path depending on the location of the HTML file
+  const basePath = window.location.pathname.includes('/views/') ? '../' : '';
 
   // ==========================================
-  // LÓGICA 1: LOGICA DE SECCIÓN NOTICIAS (INDEX.HTML)
+  // LOGIC 1: NEWS SECTION LOGIC (INDEX.HTML)
   // ==========================================
   const newsGrid = document.getElementById("news-grid");
   if (newsGrid) {
-    fetch(rutaBase + "js/noticias.json")
+    fetch(basePath + "js/noticias.json")
       .then(response => {
-        if (!response.ok) throw new Error("Error al recuperar novedades");
+        if (!response.ok) throw new Error("Error retrieving updates and news");
         return response.json();
       })
-      .then(noticias => {
-        newsGrid.innerHTML = "";
-        noticias.forEach(item => {
-          newsGrid.innerHTML += `
+      .then(news => {
+        let newsHtml = ""; // Performance optimization: accumulate string
+        news.forEach(item => {
+          newsHtml += `
             <article class="news-card">
               <div class="card-thumb">
                 <img src="${item.imagen}" alt="${item.titulo}">
@@ -28,42 +28,43 @@ document.addEventListener("DOMContentLoaded", () => {
             </article>
           `;
         });
+        newsGrid.innerHTML = newsHtml; // Single DOM injection
       })
       .catch(err => console.error(err));
   }
 
   // ==========================================
-  // LÓGICA 2: GALERÍA DINÁMICA Y FILTRADO (GALERIA.HTML)
+  // LOGIC 2: DYNAMIC GALLERY & FILTERING (GALERIA.HTML)
   // ==========================================
   const galleryContainer = document.getElementById("gallery-container");
   const immersiveSection = document.getElementById("immersive-section");
   
   if (galleryContainer) {
-    let todasLasImagenes = [];
+    let allImages = [];
 
-    // 1. Cargar las imágenes desde el JSON externo de forma dinámica
-    fetch(rutaBase + "js/galeria.json")
+    // 1. Load images dynamically from external JSON
+    fetch(basePath + "js/galeria.json")
       .then(response => {
-        if (!response.ok) throw new Error("Error al recuperar galería");
+        if (!response.ok) throw new Error("Error retrieving gallery data");
         return response.json();
       })
       .then(data => {
-        todasLasImagenes = data;
-        renderGallery(todasLasImagenes); // Render inicial de todos los items
+        allImages = data;
+        renderGallery(allImages); // Initial rendering of all items
         setupFilters();
       })
       .catch(err => console.error(err));
 
-    // Función encargada de pintar los nodos HTML de las imágenes
+    // Function responsible for rendering gallery HTML nodes
     function renderGallery(items) {
-      galleryContainer.innerHTML = "";
       if (items.length === 0) {
-        galleryContainer.innerHTML = "<p>No hay elementos disponibles en esta categoría.</p>";
+        galleryContainer.innerHTML = "<p>No items available in this category.</p>";
         return;
       }
 
+      let galleryHtml = ""; // Performance optimization
       items.forEach(item => {
-        const itemHtml = `
+        galleryHtml += `
           <div class="gallery-item" data-id="${item.id}">
             <img src="${item.imagen}" alt="${item.titulo}">
             <div class="gallery-overlay">
@@ -71,45 +72,45 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
           </div>
         `;
-        galleryContainer.innerHTML += itemHtml;
       });
+      galleryContainer.innerHTML = galleryHtml; // Single DOM injection
 
-      // Añadir evento click a cada elemento de la galería recién renderizado
+      // Attach click events to freshly rendered gallery items
       document.querySelectorAll(".gallery-item").forEach(card => {
         card.addEventListener("click", () => {
-          const idSeleccionado = parseInt(card.getAttribute("data-id"));
-          const objetoImagen = todasLasImagenes.find(img => img.id === idSeleccionado);
-          if (objetoImagen) inicializarVisor(objetoImagen);
+          const selectedId = parseInt(card.getAttribute("data-id"));
+          const imageObject = allImages.find(img => img.id === selectedId);
+          if (imageObject) initializeViewer(imageObject);
         });
       });
     }
 
-    // 2. Controladores de los botones de filtrado
+    // 2. Filter button event controllers
     function setupFilters() {
-      const botonesFiltro = document.querySelectorAll(".filter-btn");
+      const filterButtons = document.querySelectorAll(".filter-btn");
       
-      botonesFiltro.forEach(boton => {
-        boton.addEventListener("click", () => {
-          // Remover clase activa de los demás botones
-          botonesFiltro.forEach(b => b.classList.remove("active"));
-          boton.classList.add("active");
+      filterButtons.forEach(button => {
+        button.addEventListener("click", () => {
+          // Remove active class from other buttons
+          filterButtons.forEach(b => b.classList.remove("active"));
+          button.classList.add("active");
 
-          const filtro = boton.getAttribute("data-filter");
+          const currentFilter = button.getAttribute("data-filter");
 
-          // Filtrado condicional
-          if (filtro === "all") {
-            renderGallery(todasLasImagenes);
+          // Conditional filtering
+          if (currentFilter === "all") {
+            renderGallery(allImages);
           } else {
-            const filtrados = todasLasImagenes.filter(img => img.categoria === filtro);
-            renderGallery(filtrados);
+            const filteredItems = allImages.filter(img => img.categoria === currentFilter);
+            renderGallery(filteredItems);
           }
         });
       });
     }
 
-    // 3. Mecanismo dinámico para el Immersive Viewer
-    function inicializarVisor(data) {
-      // Modificamos las clases y estructura del contenedor para el estado activo
+    // 3. Dynamic mechanism for the Immersive Viewer
+    function initializeViewer(data) {
+      // Modify classes and layout of the container for the active view state
       immersiveSection.className = "immersive-viewer active-view";
       immersiveSection.innerHTML = `
         <div class="viewer-image-side">
@@ -119,153 +120,158 @@ document.addEventListener("DOMContentLoaded", () => {
           <span class="viewer-tag">// CORE SYSTEM // CATEGORY: ${data.categoria}</span>
           <h3 style="margin-top: 10px; font-size: 26px;">${data.titulo}</h3>
           <p style="margin: 15px 0 25px 0;">${data.descripcion}</p>
-          <button class="btn-action-active" onclick="alert('Iniciando protocolo de análisis técnico...')">EXPLORE INTERFACE</button>
+          <button class="btn-action-active" id="btn-explore-interface">EXPLORE INTERFACE</button>
         </div>
       `;
+
+      // Inline onclick alert avoided for better standard compliance
+      document.getElementById("btn-explore-interface").addEventListener("click", () => {
+        alert("Initializing technical analysis protocol...");
+      });
     }
   }
-});
 
-// ==========================================
-  // LÓGICA 3: PRESUPUESTO INTERACTIVO Y VALIDACIÓN (PRESUPUESTO.HTML)
   // ==========================================
-  const formPresupuesto = document.getElementById("presupuestoForm");
+  // LOGIC 3: INTERACTIVE BUDGET & VALIDATION (PRESUPUESTO.HTML)
+  // ==========================================
+  const formBudget = document.getElementById("presupuestoForm");
   
-  if (formPresupuesto) {
-    // 1. SELECTORES DE ENTRADA
-    const inputNombre = document.getElementById("nombre");
-    const inputApellidos = document.getElementById("apellidos");
-    const inputTelefono = document.getElementById("telefono");
+  if (formBudget) {
+    // 1. INPUT SELECTORS
+    const inputName = document.getElementById("nombre");
+    const inputLastName = document.getElementById("apellidos");
+    const inputPhone = document.getElementById("telefono");
     const inputEmail = document.getElementById("email");
-    const selectProducto = document.getElementById("producto");
-    const inputPlazo = document.getElementById("plazo");
-    const checkPrivacidad = document.getElementById("privacidad");
+    const selectProduct = document.getElementById("producto");
+    const inputTerm = document.getElementById("plazo");
+    const checkPrivacy = document.getElementById("privacidad");
     const btnReset = document.getElementById("btn-reset");
 
-    // 2. SELECTORES DE PANTALLA DINÁMICA (RECIBO)
-    const lblPlazoVal = document.getElementById("plazo-val");
-    const lblDescuentoTag = document.getElementById("descuento-tag");
-    const txtReciboBase = document.getElementById("recibo-base");
-    const txtReciboPlazoDesc = document.getElementById("recibo-plazo-desc");
-    const txtReciboDescuento = document.getElementById("recibo-descuento");
-    const txtReciboExtras = document.getElementById("recibo-extras");
-    const txtReciboTax = document.getElementById("recibo-tax");
-    const txtReciboTotal = document.getElementById("recibo-total");
+    // 2. DYNAMIC RECEIPT DISPLAY SELECTORS
+    const lblTermVal = document.getElementById("plazo-val");
+    const lblDiscountTag = document.getElementById("descuento-tag");
+    const txtReceiptBase = document.getElementById("recibo-base");
+    const txtReceiptTermDesc = document.getElementById("recibo-plazo-desc");
+    const txtReceiptDiscount = document.getElementById("recibo-descuento");
+    const txtReceiptExtras = document.getElementById("recibo-extras");
+    const txtReceiptTax = document.getElementById("recibo-tax");
+    const txtReceiptTotal = document.getElementById("recibo-total");
 
-    // 3. EXPRESIONES REGULARES NATIVAS (REQUERIDO ENUNCIADO)
-    const regexLetras = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
-    const regexTelefono = /^\d{9}$/;
+    // 3. NATIVE REGULAR EXPRESSIONS
+    const regexLetters = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
+    const regexPhone = /^\d{9}$/;
     const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-    // Función de cálculo matemático en tiempo real (Sin botones)
-    function calcularPresupuestoInmediato() {
-      // Base
-      const costeBase = parseFloat(selectProducto.value);
+    // Real-time calculation logic
+    function calculateInstantBudget() {
+      // Base cost
+      const baseCost = parseFloat(selectProduct.value) || 0;
       
-      // Plazo y Descuentos aplicados consecutivamente
-      const meses = parseInt(inputPlazo.value);
-      lblPlazoVal.innerText = `${meses} Mese${meses > 1 ? 'es' : 's'}`;
+      // Term and discounts applied sequentially
+      const months = parseInt(inputTerm.value) || 1;
+      lblTermVal.innerText = `${months} Month${months > 1 ? 's' : ''}`;
       
-      let porcentajeDescuento = 0;
-      if (meses >= 12 && meses < 24) {
-        porcentajeDescuento = 0.15; // 15% Descuento anual solicitado en maqueta
-        lblDescuentoTag.innerText = "Save 15% Annual";
-        lblDescuentoTag.style.display = "inline-block";
-      } else if (meses >= 24) {
-        porcentajeDescuento = 0.25; // 25% por larga permanencia
-        lblDescuentoTag.innerText = "Save 25% Loyalty";
-        lblDescuentoTag.style.display = "inline-block";
+      let discountPercentage = 0;
+      if (months >= 12 && months < 24) {
+        discountPercentage = 0.15; // 15% Annual discount
+        lblDiscountTag.innerText = "Save 15% Annual";
+        lblDiscountTag.style.display = "inline-block";
+      } else if (months >= 24) {
+        discountPercentage = 0.25; // 25% Loyalty discount
+        lblDiscountTag.innerText = "Save 25% Loyalty";
+        lblDiscountTag.style.display = "inline-block";
       } else {
-        lblDescuentoTag.style.display = "none";
+        lblDiscountTag.style.display = "none";
       }
 
-      const cantidadDescuento = costeBase * porcentajeDescuento;
-      txtReciboPlazoDesc.innerText = `${meses} Month Commitment (${porcentajeDescuento * 100}%)`;
+      const discountAmount = baseCost * discountPercentage;
+      txtReceiptTermDesc.innerText = `${months} Month Commitment (${discountPercentage * 100}%)`;
       
-      // Extras acumulativos (Checkboxes)
-      let acumuladoExtras = 0;
-      const checkboxesActivos = formPresupuesto.querySelectorAll('input[name="extras"]:checked');
-      checkboxesActivos.forEach(cb => {
-        acumuladoExtras += parseFloat(cb.value);
+      // Accumulative Extras (Checkboxes)
+      let accumulatedExtras = 0;
+      const activeCheckboxes = formBudget.querySelectorAll('input[name="extras"]:checked');
+      activeCheckboxes.forEach(cb => {
+        accumulatedExtras += parseFloat(cb.value) || 0;
       });
 
-      // Cálculos parciales y Tasas fijas (Ej: 10% regulaciones operativas)
-      const subtotalMensual = (costeBase - cantidadDescuento) + acumuladoExtras;
-      const tasaRegulaciones = subtotalMensual * 0.10;
-      const inversionTotalFinal = subtotalMensual + tasaRegulaciones;
+      // Partial calculations and operating regulation fee (10%)
+      const monthlySubtotal = (baseCost - discountAmount) + accumulatedExtras;
+      const regulationTax = monthlySubtotal * 0.10;
+      const finalTotalInvestment = monthlySubtotal + regulationTax;
 
-      // Inyección formateada en los nodos de texto de la columna derecha
-      txtReciboBase.innerText = `$${costeBase.toFixed(2)}`;
-      txtReciboDescuento.innerText = `-$${cantidadDescuento.toFixed(2)}`;
-      txtReciboExtras.innerText = `$${acumuladoExtras.toFixed(2)}`;
-      txtReciboTax.innerText = `$${tasaRegulaciones.toFixed(2)}`;
-      txtReciboTotal.innerText = inversionTotalFinal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      // Update right column layout receipt nodes
+      txtReceiptBase.innerText = `$${baseCost.toFixed(2)}`;
+      txtReceiptDiscount.innerText = `-$${discountAmount.toFixed(2)}`;
+      txtReceiptExtras.innerText = `$${accumulatedExtras.toFixed(2)}`;
+      txtReceiptTax.innerText = `$${regulationTax.toFixed(2)}`;
+      txtReceiptTotal.innerText = finalTotalInvestment.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     }
 
-    // 4. SISTEMA DE ESCUCHA ACTIVA DE EVENTOS (INPUT)
-    selectProducto.addEventListener("change", calcularPresupuestoInmediato);
-    inputPlazo.addEventListener("input", calcularPresupuestoInmediato);
-    formPresupuesto.addEventListener("change", (e) => {
-      if (e.target.name === "extras") calcularPresupuestoInmediato();
+    // 4. ACTIVE EVENT LISTENERS FOR CALCULATION
+    selectProduct.addEventListener("change", calculateInstantBudget);
+    inputTerm.addEventListener("input", calculateInstantBudget);
+    formBudget.addEventListener("change", (e) => {
+      if (e.target.name === "extras") calculateInstantBudget();
     });
 
-    // 5. RUTINAS DE VALIDACIÓN DE CONTACTO (PARTE 1 ENUNCIADO)
-    function validarCampoIndividual(input, regex, msgErrorElemento, textoSiFalla, longMax = null) {
-      const valor = input.value.trim();
+    // 5. CONTACT VALIDATION ROUTINES
+    function validateIndividualField(input, regex, errorMsgElement, textIfFails, maxLength = null) {
+      const value = input.value.trim();
       
-      if (!valor) {
-        msgErrorElemento.innerText = "Este campo es obligatorio.";
+      if (!value) {
+        errorMsgElement.innerText = "This field is required.";
         input.style.borderColor = "#d93838";
         return false;
       }
-      if (longMax && valor.length > longMax) {
-        msgErrorElemento.innerText = `Excede el tamaño máximo permitido (${longMax} caracteres).`;
+      if (maxLength && value.length > maxLength) {
+        errorMsgElement.innerText = `Exceeds maximum size permitted (${maxLength} characters).`;
         input.style.borderColor = "#d93838";
         return false;
       }
-      if (regex && !regex.test(valor)) {
-        msgErrorElemento.innerText = textoSiFalla;
+      if (regex && !regex.test(value)) {
+        errorMsgElement.innerText = textIfFails;
         input.style.borderColor = "#d93838";
         return false;
       }
 
-      // Si pasa los filtros limpiamos errores
-      msgErrorElemento.innerText = "";
+      // Clear errors if filters are passed successfully
+      errorMsgElement.innerText = "";
       input.style.borderColor = "#cbd5df";
       return true;
     }
 
-    // Interceptación del submit final
-    formPresupuesto.addEventListener("submit", (e) => {
-      e.preventDefault(); // Detiene envío nativo
+    // Final submit interception control
+    formBudget.addEventListener("submit", (e) => {
+      e.preventDefault();
 
-      const esNombreValido = validarCampoIndividual(inputNombre, regexLetras, document.getElementById("err-nombre"), "Sólo se admiten letras.", 15);
-      const esApellidoValido = validarCampoIndividual(inputApellidos, regexLetras, document.getElementById("err-apellidos"), "Sólo se admiten letras.", 40);
-      const esTelefonoValido = validarCampoIndividual(inputTelefono, regexTelefono, document.getElementById("err-telefono"), "Debe contener exactamente 9 números.");
-      const esEmailValido = validarCampoIndividual(inputEmail, regexEmail, document.getElementById("err-email"), "Formato incorrecto (nnnnn_nn@zzzzz.xxx).");
+      const isNameValid = validateIndividualField(inputName, regexLetters, document.getElementById("err-nombre"), "Only letters are allowed.", 15);
+      const isLastNameValid = validateIndividualField(inputLastName, regexLetters, document.getElementById("err-apellidos"), "Only letters are allowed.", 40);
+      const isPhoneValid = validateIndividualField(inputPhone, regexPhone, document.getElementById("err-telefono"), "Must contain exactly 9 numbers.");
+      const isEmailValid = validateIndividualField(inputEmail, regexEmail, document.getElementById("err-email"), "Incorrect format (nnnnn_nn@zzzzz.xxx).");
 
-      if (!checkPrivacidad.checked) {
-        alert("Atención: Debe aceptar expresamente las condiciones de privacidad.");
+      if (!checkPrivacy.checked) {
+        alert("Attention: You must explicitly accept the privacy terms and conditions.");
         return;
       }
 
-      if (esNombreValido && esApellidoValido && esTelefonoValido && esEmailValido) {
-        alert(`¡Propuesta sincronizada con éxito!\nCliente: ${inputNombre.value} ${inputApellidos.value}\nInversión mensual calculada: $${txtReciboTotal.innerText}`);
-        // Aquí se procedería a enviar los datos procesados al servidor de producción
+      if (isNameValid && isLastNameValid && isPhoneValid && isEmailValid) {
+        alert(`Proposal synchronized successfully!\nClient: ${inputName.value} ${inputLastName.value}\nCalculated monthly investment: $${txtReceiptTotal.innerText}`);
+        // Ready for production server data handling
       } else {
-        alert("Por favor, corrige los errores del formulario de contacto antes de continuar.");
+        alert("Please correct the errors in the contact form before proceeding.");
       }
     });
 
-    // Botón de reseteo completo controlado
+    // Managed complete reset button behavior
     btnReset.addEventListener("click", () => {
-      formPresupuesto.reset();
-      // Limpiar errores visuales
+      formBudget.reset();
+      // Clean up visual error states
       document.querySelectorAll(".error-msg").forEach(span => span.innerText = "");
       document.querySelectorAll(".input-wrapper input").forEach(input => input.style.borderColor = "#cbd5df");
-      calcularPresupuestoInmediato();
+      calculateInstantBudget();
     });
 
-    // Inicialización al cargar la página
-    calcularPresupuestoInmediato();
+    // Page load initialization trigger
+    calculateInstantBudget();
   }
+}); // <-- CORREGIDO: Ahora cierra todo el hilo del DOMContentLoaded de manera segura
