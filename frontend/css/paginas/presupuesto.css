@@ -1,0 +1,375 @@
+/* --- VALUATION PAGE LAYOUT --- */
+.valuation-intro {
+  padding: 60px 10% 20px 10%;
+  background-color: var(--color-main);
+}
+
+.section-subtitle {
+  font-family: "Afacad", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #516176;
+  margin-bottom: 10px;
+}
+
+.section-title {
+  font-family: "Afacad", sans-serif;
+  font-size: 40px;
+  color: #1c2d42;
+  line-height: 1.1;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.section-lead {
+  font-family: "Afacad", sans-serif;
+  font-size: 16px;
+  color: var(--color-secondary);
+  max-width: 500px;
+  line-height: 1.5;
+}
+
+/* Form Grid */
+.budget-grid-container {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 40px;
+  padding: 20px 10% 80px 10%;
+  align-items: flex-start;
+}
+
+/* Estilo Tarjeta por Pasos */
+.step-card {
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 35px;
+  margin-bottom: 25px;
+  display: flex;
+  gap: 25px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+  border: 1px solid #eef2f6;
+}
+
+.step-badge {
+  background: #e1e7ec;
+  color: #1c2d42;
+  font-family: monospace;
+  font-size: 14px;
+  font-weight: 700;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.step-content {
+  flex: 1;
+}
+
+.step-content h3 {
+  font-family: "Afacad", sans-serif;
+  font-size: 20px;
+  color: #1c2d42;
+  margin-bottom: 15px;
+}
+
+.step-desc {
+  font-size: 13px;
+  color: #72849a;
+  margin-bottom: 20px;
+}
+
+/* INPUTS DE CONTACTO VALIDACIÓN */
+.input-group-row {
+  display: flex;
+  gap: 20px;
+}
+
+.input-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input-wrapper label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #72849a;
+  letter-spacing: 0.5px;
+}
+
+.input-wrapper input {
+  padding: 12px;
+  border: 1px solid #cbd5df;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #1c2d42;
+  outline: none;
+  background-color: #fbfcfd;
+  transition: border-color 0.2s;
+}
+
+.input-wrapper input:focus {
+  border-color: var(--color-primary);
+}
+
+.error-msg {
+  font-size: 11px;
+  color: #d93838;
+  margin-top: 20px;
+  min-height: 14px;
+}
+
+/* SELECT STEP 01 */
+.base-tier-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.select-style-wrapper select {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #cbd5df;
+  border-radius: 4px;
+  background-color: #f8fafc;
+  font-size: 15px;
+  color: #1c2d42;
+  cursor: pointer;
+}
+
+/* SLIDER STEP 02 */
+.duration-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  align-items: center;
+}
+
+.discount-badge {
+  background-color: #fce8e6;
+  color: #c53030;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.range-slider-container input[type="range"] {
+  width: 100%;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.range-ticks {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #9cb1c9;
+  font-weight: 600;
+}
+
+/* CHECKBOX CARDS STEP 03 */
+.complications-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+
+.checkbox-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 18px;
+  border: 1px solid #e2e8ed;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.checkbox-card:hover {
+  background-color: #fbfcfd;
+}
+
+.checkbox-label-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.checkbox-label-block strong {
+  font-size: 15px;
+  color: #1c2d42;
+}
+
+.sub-txt {
+  font-size: 12px;
+  color: #72849a;
+  margin: 4px 0 6px 0;
+}
+
+.price-txt {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+/* RECIBO DERECHO (BUDGET ALLOCATION) */
+.sticky-receipt-card {
+  background: #ffffff;
+  border: 1px solid #eef2f6;
+  border-radius: 6px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(28,45,66,0.04);
+  position: sticky;
+  top: 40px;
+}
+
+.sticky-receipt-card h3 {
+  font-size: 22px;
+  color: #1c2d42;
+  margin-bottom: 25px;
+}
+
+.receipt-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #516176;
+  margin-bottom: 18px;
+}
+
+.discount-line {
+  color: #c53030;
+}
+
+.receipt-divider {
+  height: 1px;
+  background-color: #e2e8ed;
+  margin: 25px 0;
+}
+
+.total-investment-block {
+  margin-bottom: 30px;
+}
+
+.total-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #72849a;
+  letter-spacing: 1px;
+}
+
+.total-amount-display {
+  display: flex;
+  align-items: flex-start;
+  font-size: 44px;
+  font-weight: 700;
+  color: #1c2d42;
+  line-height: 1;
+  margin-top: 5px;
+}
+
+.currency-symbol {
+  font-size: 24px;
+  margin-right: 4px;
+  margin-top: 4px;
+}
+
+.btn-finalize {
+  width: 100%;
+  padding: 16px;
+  background-color: #3b526e;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-finalize:hover {
+  background-color: #1c2d42;
+}
+
+.secure-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #9cb1c9;
+  margin-top: 25px;
+}
+
+/* Badges inferiores */
+.status-mini-cards {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.mini-card {
+  background-color: #f1f4f7;
+  padding: 15px 20px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.icon-blue {
+  color: #3b526e;
+  font-size: 18px;
+}
+
+.mini-card h4 {
+  font-size: 11px;
+  font-weight: 700;
+  color: #72849a;
+}
+
+.mini-card p {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1c2d42;
+}
+
+/* Privacidad */
+.privacy-card {
+  flex-direction: column;
+  gap: 20px;
+}
+.privacy-checkbox-container {
+  display: flex;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #516176;
+}
+
+.btn-secondary-custom {
+  padding: 10px 20px;
+  background: none;
+  border: 1px solid #cbd5df;
+  border-radius: 4px;
+  color: #72849a;
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 990px) {
+  .budget-grid-container { grid-template-columns: 1fr; }
+}
