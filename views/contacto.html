@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- CONFIGURACIÓN TÉCNICA, METADATOS Y ESTILOS -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto - Chrono Service</title>
+  
+  <!-- Archivos de estilos CSS locales -->
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/paginas/contacto.css">
+  
+  <!-- Iconos externos y mapa de Leaflet -->
+  <script src="https://kit.fontawesome.com/71b2d07671.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="anonymous" />
+</head>
+<body class="site">
+
+  <!-- ENCABEZADO: Logotipo y navegación principal -->
+  <header>
+    <a class="logo" href="../index.html"><h1>Chrono service</h1></a>
+    <nav>
+      <ul class="nav_links">
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="productos.html">Productos</a></li>
+        <li><a href="presupuesto.html">Presupuesto</a></li>
+      </ul>
+    </nav>
+    <a class="cta" href="contacto.html"><button>Contacto</button></a>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL DE LA PÁGINA -->
+  <main>
+    
+    <!-- SECCIÓN HERO: Presentación de la sede -->
+    <section class="contact-hero">
+      <div class="hero-content">
+        <p class="subtitle">SEDE INTERNACIONAL</p>
+        <h2>Conecte con la <span class="accent-text">Precisión.</span></h2>
+        <p class="description">Experimente el estándar de oro en servicios de alta relojería. Nuestros expertos en Ginebra están a su disposición para resolver cualquier consulta técnica o solicitud de restauración de piezas históricas.</p>
+      </div>
+    </section>
+
+    <!-- SECCIÓN CENTRAL: Formulario y datos de información -->
+    <section class="contact-body-container">
+      <div class="container-grid">
+        
+        <!-- Bloque del Formulario de Solicitud -->
+        <div class="form-card">
+          <h3>Solicitud de Servicio</h3>
+          <p class="form-sub">Complete el formulario inferior para asistencia técnica o consultoría especializada.</p>
+          
+          <form id="serviceForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fullName">NOMBRE COMPLETO</label>
+                <input type="text" id="fullName" placeholder="Su nombre" required>
+              </div>
+              <div class="form-group">
+                <label for="emailAddress">CORREO ELECTRÓNICO</label>
+                <input type="email" id="emailAddress" placeholder="ejemplo@dominio.com" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="subject">ASUNTO</label>
+              <select id="subject" required>
+                <option value="" disabled selected>Seleccione el asunto</option>
+                <option value="restoration">Restauración de Piezas Históricas</option>
+                <option value="mechanism">Calibración de Mecanismos</option>
+                <option value="support">Asistencia Técnica</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">DETALLE DEL MENSAJE</label>
+              <textarea id="message" rows="5" placeholder="Describa su solicitud detalladamente..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn-dispatch">ENVIAR SOLICITUD</button>
+          </form>
+        </div>
+
+        <!-- Barra lateral con información de contacto directa -->
+        <div class="info-sidebar">
+          <div class="info-block">
+            <p class="info-label">TALLER DE GINEBRA</p>
+            <div class="info-data">
+              <i class="fa-solid fa-location-dot icon-blue"></i>
+              <div>
+                <strong>24 Horology Row</strong>
+                <p>Ginebra, 1204 Suiza</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-block">
+            <p class="info-label">CONTACTO DIRECTO</p>
+            <div class="info-data">
+              <i class="fa-solid fa-phone icon-blue"></i>
+              <p>+41 22 555 0192</p>
+            </div>
+            <div class="info-data">
+              <i class="fa-solid fa-envelope icon-blue"></i>
+              <p>concierge@chronos.ch</p>
+            </div>
+            <div class="info-data">
+              <i class="fa-solid fa-clock icon-blue"></i>
+              <p>Lun — Vie: 09:00 - 18:00 CET</p>
+            </div>
+          </div>
+
+          <!-- Iconos informativos al pie de la barra lateral -->
+          <div class="sidebar-footer-icons">
+            <i class="fa-solid fa-share-nodes"></i>
+            <i class="fa-solid fa-print"></i>
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECCIÓN DEL MAPA: Cálculo de rutas dinámicas -->
+    <section class="map-section">
+      <div class="map-layout-grid">
+        
+        <!-- Panel izquierdo del mapa: Configuración del viaje -->
+        <div class="route-panel">
+          <h3>Planifique su Visita</h3>
+          
+          <div class="route-input-group">
+            <label for="userLocation">SU UBICACIÓN</label>
+            <div class="input-with-icon">
+              <i class="fa-crosshairs icon-input"></i>
+              <input type="text" id="userLocation" placeholder="Ciudad de origen (ej. Madrid, Barcelona)">
+            </div>
+          </div>
+
+          <div class="route-input-group">
+            <label>DESTINO</label>
+            <div class="input-with-icon disabled-input">
+              <i class="fa-solid fa-location-dot icon-input"></i>
+              <input type="text" value="24 Horology Row, Ginebra" disabled>
+            </div>
+          </div>
+
+          <button id="calculateRouteBtn" class="btn-route">
+            <i class="fa-solid fa-car-side"></i> CALCULAR RUTA
+          </button>
+
+          <!-- Filtros para elegir el medio de transporte -->
+          <div class="transport-modes">
+            <!-- Botón de transporte público / tren -->
+            <button class="mode-btn active">
+              <i class="fa-solid fa-train" style="color: #2b4360;"></i>
+            </button>
+            
+            <!-- Botón para ir andando / peatón -->
+            <button class="mode-btn">
+              <i class="fa-solid fa-person-walking" style="color: #64748b;"></i>
+            </button>
+          </div>
+          
+          <!-- Caja donde se inyectarán las indicaciones con JS -->
+          <div id="routeResult" class="route-result-box hidden"></div>
+        </div>
+
+        <!-- Div donde Leaflet renderizará el mapa dinámico -->
+        <div id="map"></div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- PIE DE PÁGINA (FOOTER) -->
+  <footer class="footer">
+    <h5>@2026 Precision Service Management. Todos los derechos reservados.</h5>
+  </footer>
+
+  <!-- Scripts de inicialización del mapa y procesamiento del formulario -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin="anonymous"></script>
+  <script src="../js/contacto.js"></script>
+</body>
+</html>
