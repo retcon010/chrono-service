@@ -1,21 +1,35 @@
-/* --- CONFIGURACIÓN DE PÁGINA CONTACTO --- */
+/* =========================================================
+   CONFIGURACIÓN GENERAL DE PÁGINA CONTACTO
+   Estilos base del body para esta sección
+   ========================================================= */
+
 body {
   background-color: #f4f7f9;
   color: #1e293b;
 }
 
-/* Hero Section */
+/* =========================================================
+   HERO SECTION (CABECERA CONTACTO)
+   Imagen de fondo + texto introductorio
+   ========================================================= */
+
 .contact-hero {
-  background: linear-gradient(rgba(244, 247, 249, 0.88), rgba(244, 247, 249, 0.95)), 
-              url('https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1200') no-repeat center center;
+  background: linear-gradient(
+                rgba(244, 247, 249, 0.88),
+                rgba(244, 247, 249, 0.95)
+              ),
+              url('https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1200')
+              no-repeat center center;
   background-size: cover;
   padding: 80px 8% 40px 8%;
 }
 
+/* Contenedor del contenido del hero */
 .hero-content {
   max-width: 600px;
 }
 
+/* Subtítulo superior del hero */
 .subtitle {
   font-family: "Afacad", sans-serif;
   font-size: 11px;
@@ -26,6 +40,7 @@ body {
   margin-bottom: 8px;
 }
 
+/* Título principal del hero */
 .contact-hero h2 {
   font-family: "Afacad", sans-serif;
   font-size: 42px;
@@ -34,10 +49,12 @@ body {
   margin-bottom: 20px;
 }
 
+/* Texto destacado dentro del título */
 .accent-text {
   color: #2b4360;
 }
 
+/* Descripción del hero */
 .description {
   font-family: "Afacad", sans-serif;
   font-size: 15px;
@@ -45,7 +62,11 @@ body {
   color: #475569;
 }
 
-/* Contenedor Principal en Grid */
+/* =========================================================
+   CONTENEDOR PRINCIPAL (FORM + SIDEBAR)
+   Layout en grid de dos columnas
+   ========================================================= */
+
 .contact-body-container {
   padding: 0 8% 80px 8%;
 }
@@ -57,7 +78,10 @@ body {
   align-items: start;
 }
 
-/* Tarjeta del Formulario */
+/* =========================================================
+   TARJETA DEL FORMULARIO
+   ========================================================= */
+
 .form-card {
   background: #ffffff;
   padding: 40px;
@@ -65,6 +89,7 @@ body {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
 }
 
+/* Título del formulario */
 .form-card h3 {
   font-family: "Afacad", sans-serif;
   font-size: 22px;
@@ -72,6 +97,7 @@ body {
   margin-bottom: 6px;
 }
 
+/* Subtítulo del formulario */
 .form-sub {
   font-family: "Afacad", sans-serif;
   font-size: 13px;
@@ -79,18 +105,25 @@ body {
   margin-bottom: 30px;
 }
 
+/* =========================================================
+   FORMULARIO (GRID Y CAMPOS)
+   ========================================================= */
+
+/* Fila de inputs en dos columnas */
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
 
+/* Grupo de cada input */
 .form-group {
   display: flex;
   flex-direction: column;
   margin-bottom: 25px;
 }
 
+/* Label de cada campo */
 .form-group label {
   font-family: "Afacad", sans-serif;
   font-size: 11px;
@@ -100,10 +133,11 @@ body {
   margin-bottom: 8px;
 }
 
-.form-group input, 
-.form-group select, 
+/* Inputs, selects y textarea */
+.form-group input,
+.form-group select,
 .form-group textarea {
-  font-family: "Afacad", sans-serif; /* Fuerza la herencia de fuente */
+  font-family: "Afacad", sans-serif;
   padding: 12px 0;
   border: none;
   border-bottom: 1px solid #cbd5e1;
@@ -114,24 +148,31 @@ body {
   transition: border-color 0.2s;
 }
 
+/* Textarea ajustable */
 .form-group textarea {
-  resize: vertical; /* Evita que rompan el ancho de la tarjeta */
+  resize: vertical;
   min-height: 80px;
 }
 
-.form-group input:focus, 
-.form-group select:focus, 
+/* Estado focus de inputs */
+.form-group input:focus,
+.form-group select:focus,
 .form-group textarea:focus {
   border-bottom: 1px solid #2b4360;
 }
 
-/* Contenedor del botón para prescindir de floats peligrosos */
+/* =========================================================
+   ACCIONES DEL FORMULARIO
+   ========================================================= */
+
+/* Contenedor del botón */
 .form-actions {
   display: flex;
   justify-content: flex-end;
   width: 100%;
 }
 
+/* Botón principal enviar */
 .btn-dispatch {
   font-family: "Afacad", sans-serif;
   background-color: #2b4360;
@@ -146,19 +187,25 @@ body {
   transition: background-color 0.2s;
 }
 
+/* Hover del botón */
 .btn-dispatch:hover {
   background-color: #1e3046;
 }
 
-/* Sidebar de Datos Corporativos */
+/* =========================================================
+   SIDEBAR DE INFORMACIÓN
+   ========================================================= */
+
 .info-sidebar {
   padding-left: 20px;
 }
 
+/* Bloques de información */
 .info-block {
   margin-bottom: 35px;
 }
 
+/* Etiqueta de sección en sidebar */
 .info-label {
   font-family: "Afacad", sans-serif;
   font-size: 11px;
@@ -168,6 +215,7 @@ body {
   margin-bottom: 15px;
 }
 
+/* Línea de datos */
 .info-data {
   font-family: "Afacad", sans-serif;
   display: flex;
@@ -178,12 +226,14 @@ body {
   color: #334155;
 }
 
+/* Iconos del sidebar */
 .icon-blue {
   color: #2b4360;
   margin-top: 3px;
   width: 16px;
 }
 
+/* Iconos sociales footer sidebar */
 .sidebar-footer-icons {
   display: flex;
   gap: 20px;
@@ -202,19 +252,25 @@ body {
   color: #2b4360;
 }
 
+/* =========================================================
+   MAPA INTERACTIVO
+   ========================================================= */
 
-/* --- SECCIÓN DEL MAPA DINÁMICO --- */
 .map-section {
   background-color: #e3ebf0;
 }
 
+/* Layout mapa + panel */
 .map-layout-grid {
   display: grid;
   grid-template-columns: 350px 1fr;
   min-height: 550px;
 }
 
-/* Panel de control izquierdo */
+/* =========================================================
+   PANEL DE RUTAS (IZQUIERDA)
+   ========================================================= */
+
 .route-panel {
   background-color: #e3ebf0;
   padding: 40px 30px;
@@ -222,6 +278,7 @@ body {
   flex-direction: column;
 }
 
+/* Título panel rutas */
 .route-panel h3 {
   font-family: "Afacad", sans-serif;
   font-size: 24px;
@@ -229,12 +286,14 @@ body {
   margin-bottom: 30px;
 }
 
+/* Grupo de input de ruta */
 .route-input-group {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
 }
 
+/* Label de inputs de ruta */
 .route-input-group label {
   font-family: "Afacad", sans-serif;
   font-size: 10px;
@@ -244,6 +303,7 @@ body {
   margin-bottom: 6px;
 }
 
+/* Input con icono */
 .input-with-icon {
   background: #ffffff;
   display: flex;
@@ -253,16 +313,19 @@ body {
   border: 1px solid rgba(0,0,0,0.05);
 }
 
+/* Input deshabilitado */
 .disabled-input {
   background-color: #f1f5f9;
 }
 
+/* Icono dentro input */
 .icon-input {
   color: #64748b;
   font-size: 12px;
   margin-right: 10px;
 }
 
+/* Input real */
 .input-with-icon input {
   font-family: "Afacad", sans-serif;
   border: none;
@@ -273,6 +336,7 @@ body {
   outline: none;
 }
 
+/* Botón calcular ruta */
 .btn-route {
   font-family: "Afacad", sans-serif;
   background-color: #2b4360;
@@ -291,12 +355,17 @@ body {
   gap: 8px;
 }
 
+/* =========================================================
+   MODOS DE TRANSPORTE
+   ========================================================= */
+
 .transport-modes {
   display: flex;
   gap: 10px;
   margin-top: 15px;
 }
 
+/* Botones de modo */
 .mode-btn {
   font-family: "Afacad", sans-serif;
   background: white;
@@ -311,12 +380,27 @@ body {
   align-items: center;
 }
 
+/* Estado activo */
 .mode-btn.active {
   box-shadow: inset 0 0 0 1px #2b4360;
   color: #2b4360;
 }
 
-/* Espacio interactivo para los resultados */
+/* Iconos dentro de modos */
+.transport-modes .mode-btn i {
+  font-size: 16px;
+  display: inline-block;
+  color: #64748b;
+}
+
+.transport-modes .mode-btn.active i {
+  color: #2b4360;
+}
+
+/* =========================================================
+   RESULTADO DE RUTA
+   ========================================================= */
+
 .route-result-box {
   font-family: "Afacad", sans-serif;
   margin-top: 20px;
@@ -329,38 +413,45 @@ body {
   animation: fadeIn 0.3s ease;
 }
 
+/* Ocultar elementos */
 .hidden { display: none; }
 
-/* Objeto del mapa real */
+/* =========================================================
+   MAPA REAL
+   ========================================================= */
+
 #map {
   width: 100%;
   height: 100%;
-  background-color: #0b1d28; 
+  background-color: #0b1d28;
 }
 
+/* Animación entrada */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(5px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsivo rápido */
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
 @media (max-width: 900px) {
-  .container-grid, .map-layout-grid {
+
+  /* Grid pasa a columna única */
+  .container-grid,
+  .map-layout-grid {
     grid-template-columns: 1fr;
   }
+
+  /* Sidebar ajustado */
   .info-sidebar {
     padding-left: 0;
     margin-top: 20px;
   }
-  #map { min-height: 350px; }
-}
 
-.transport-modes .mode-btn i {
-  font-size: 16px;
-  display: inline-block;
-  color: #64748b; 
-}
-
-.transport-modes .mode-btn.active i {
-  color: #2b4360; 
+  /* Altura mapa en móvil */
+  #map {
+    min-height: 350px;
+  }
 }
