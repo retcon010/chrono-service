@@ -1,12 +1,8 @@
 /* --- PORTFOLIO & GALLERY STYLE --- */
 .portfolio-section {
   background-color: var(--color-main);
-  padding: 80px 10%;
+  padding: 150px 10%;
   width: 100%;
-}
-
-.section-subtitle, portafolio-lead {
-  margin-top: 70px;
 }
 
 .portfolio-container {
