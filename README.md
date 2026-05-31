@@ -58,6 +58,8 @@ Puedes abrir directamente el archivo index.html en cualquier navegador web moder
 
 Recomendado: Utiliza la extensión Live Server de Visual Studio Code para disfrutar de recarga en vivo mientras editas los archivos CSS o JS.
 
+---
+
 🎨 Personalización de Estilos
 Si necesitas adaptar los colores de la plataforma a una nueva identidad corporativa, puedes modificar directamente el archivo variables.css. Los componentes y las tarjetas actualizarán sus contrastes de manera automática:
 
@@ -71,5 +73,8 @@ CSS
   --color-neutral: #F1F4F6;   /* Fondos de tarjetas y contenedores */
   --color-main: #F8F9FB;      /* Fondo principal limpio de la web */
 }
+
+---
+
 📄 Licencia
 Este proyecto se distribuye bajo la licencia MIT. Siéntete libre de utilizarlo, modificarlo y adaptarlo a tus necesidades.
