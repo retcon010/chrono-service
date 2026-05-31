@@ -78,6 +78,7 @@
 }
 
 .step-desc {
+  font-family: "Afacad", sans-serif;
   font-size: 13px;
   color: #72849a;
   margin-bottom: 20px;
@@ -87,16 +88,19 @@
 .input-group-row {
   display: flex;
   gap: 20px;
+  flex-wrap: wrap; /* Evita que los inputs colapsen en pantallas medianas */
 }
 
 .input-wrapper {
   flex: 1;
+  min-width: 200px; /* Asegura un ancho mínimo antes de saltar de línea */
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
 .input-wrapper label {
+  font-family: "Afacad", sans-serif;
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
@@ -105,6 +109,7 @@
 }
 
 .input-wrapper input {
+  font-family: "Afacad", sans-serif;
   padding: 12px;
   border: 1px solid #cbd5df;
   border-radius: 4px;
@@ -120,14 +125,16 @@
 }
 
 .error-msg {
+  font-family: "Afacad", sans-serif;
   font-size: 11px;
   color: #d93838;
-  margin-top: 20px;
+  margin-top: 10px;
   min-height: 14px;
 }
 
 /* SELECT STEP 01 */
 .base-tier-label {
+  font-family: "Afacad", sans-serif;
   font-size: 10px;
   font-weight: 700;
   color: var(--color-primary);
@@ -137,6 +144,7 @@
 }
 
 .select-style-wrapper select {
+  font-family: "Afacad", sans-serif;
   width: 100%;
   padding: 15px;
   border: 1px solid #cbd5df;
@@ -145,6 +153,9 @@
   font-size: 15px;
   color: #1c2d42;
   cursor: pointer;
+  appearance: none; /* Elimina la flecha nativa inconsistente de los SO */
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
 /* SLIDER STEP 02 */
@@ -155,7 +166,12 @@
   align-items: center;
 }
 
+.duration-header span {
+  font-family: "Afacad", sans-serif;
+}
+
 .discount-badge {
+  font-family: "Afacad", sans-serif;
   background-color: #fce8e6;
   color: #c53030;
   padding: 4px 10px;
@@ -200,9 +216,15 @@
   background-color: #fbfcfd;
 }
 
+.checkbox-card input[type="checkbox"] {
+  margin-top: 4px;
+  cursor: pointer;
+}
+
 .checkbox-label-block {
   display: flex;
   flex-direction: column;
+  font-family: "Afacad", sans-serif;
 }
 
 .checkbox-label-block strong {
@@ -234,12 +256,14 @@
 }
 
 .sticky-receipt-card h3 {
+  font-family: "Afacad", sans-serif;
   font-size: 22px;
   color: #1c2d42;
   margin-bottom: 25px;
 }
 
 .receipt-line {
+  font-family: "Afacad", sans-serif;
   display: flex;
   justify-content: space-between;
   font-size: 14px;
@@ -262,6 +286,7 @@
 }
 
 .total-title {
+  font-family: "Afacad", sans-serif;
   font-size: 11px;
   font-weight: 700;
   color: #72849a;
@@ -269,6 +294,7 @@
 }
 
 .total-amount-display {
+  font-family: "Afacad", sans-serif;
   display: flex;
   align-items: flex-start;
   font-size: 44px;
@@ -285,6 +311,7 @@
 }
 
 .btn-finalize {
+  font-family: "Afacad", sans-serif;
   width: 100%;
   padding: 16px;
   background-color: #3b526e;
@@ -303,6 +330,7 @@
 }
 
 .secure-badge {
+  font-family: "Afacad", sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -336,12 +364,14 @@
 }
 
 .mini-card h4 {
+  font-family: "Afacad", sans-serif;
   font-size: 11px;
   font-weight: 700;
   color: #72849a;
 }
 
 .mini-card p {
+  font-family: "Afacad", sans-serif;
   font-size: 14px;
   font-weight: 600;
   color: #1c2d42;
@@ -352,7 +382,9 @@
   flex-direction: column;
   gap: 20px;
 }
+
 .privacy-checkbox-container {
+  font-family: "Afacad", sans-serif;
   display: flex;
   gap: 12px;
   cursor: pointer;
@@ -361,15 +393,58 @@
 }
 
 .btn-secondary-custom {
+  font-family: "Afacad", sans-serif;
   padding: 10px 20px;
   background: none;
   border: 1px solid #cbd5df;
   border-radius: 4px;
   color: #72849a;
   cursor: pointer;
+  transition: background 0.2s, color 0.2s;
 }
 
-/* Responsive */
+.btn-secondary-custom:hover {
+  background-color: #f1f5f9;
+  color: #1c2d42;
+}
+
+/* --- RESPONSIVE DESIGN --- */
 @media (max-width: 990px) {
-  .budget-grid-container { grid-template-columns: 1fr; }
+  .budget-grid-container { 
+    grid-template-columns: 1fr; 
+    padding: 10px 5% 60px 5%;
+  }
+  
+  .valuation-intro {
+    padding: 40px 5% 10px 5%;
+  }
+
+  .sticky-receipt-card {
+    position: static; /* El recibo deja de flotar lateralmente y se coloca abajo */
+    margin-top: 20px;
+    padding: 30px 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .step-card {
+    flex-direction: column; /* El número se coloca arriba del contenido en móviles */
+    gap: 15px;
+    padding: 25px 20px;
+  }
+
+  .step-badge {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+  
+  .input-group-row {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .input-wrapper {
+    width: 100%;
+  }
 }
