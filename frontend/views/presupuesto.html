@@ -3,72 +3,242 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Presupuesto</title> 
+  <title>Precision-Calibrated Service Valuation</title>
   <link rel="stylesheet" href="../css/variables.css">
   <link rel="stylesheet" href="../css/global.css">
   <link rel="stylesheet" href="../css/paginas/presupuesto.css">
-  
-  <script src="https://kit.fontawesome.com/YOUR_KIT_CODE.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
   <div class="site">
-  <header>
-    <a class="logo" href="../index.html"><h1>Chrono service</h1></a>
-    <nav>
-      <ul class="nav_links">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="productos.html">Productos</a></li>
-        <li><a href="presupuesto.html">Presupuesto</a></li>
-        <li><a href="galeria.html" class="active">Galería</a></li>
-      </ul>
-    </nav>
-    <a class="cta" href="contacto.html"><button>Contacto</button></a>
-  </header>
-  
-  <main class="content">
-  </main>
-  
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-row">
-        <div class="footer-links">
-          <h4>Chrono Service</h4>
-          <ul>
-            <li>
-              Setting the standard for precision-led service management since 1924. 
-              Calibrated excellence for the modern age.
-            </li>
-          </ul>
-        </div>
-        
-        <div class="footer-links">
-          <h4>Quick links</h4>
-          <ul>
-            <li><a href="#">Corporate Info</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms f Service</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-links">
-          <h4>Protocol office</h4>
-          <ul>
-            <li>
-              24 Horology Row Geneva, Switzerland
-              <div>
-                <i class="fa-solid fa-share-nodes"></i>
-                <i class="fa-solid fa-at"></i>
-              </div>
-            </li>
-          </ul>
-        </div>
-        
-      </div>
-    </div>
     
-    <hr>
-    <h5>@2026 Precision Service Management. All rights reserved.</h5>
-  </footer>
+    <header>
+      <a class="logo" href="../index.html"><h1>Chrono service</h1></a>
+      <nav>
+        <ul class="nav_links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="presupuesto.html" class="active">Presupuesto</a></li>
+          <li><a href="galeria.html">Galería</a></li>
+        </ul>
+      </nav>
+      <a class="cta" href="contacto.html"><button>Contacto</button></a>
+    </header>
+
+    <main class="content">
+      <section class="valuation-intro">
+        <p class="section-subtitle">INVESTMENT PLANNING</p>
+        <h2 class="section-title">Precision-Calibrated<br>Service Valuation.</h2>
+        <p class="section-lead">Configure your service package with mathematical exactness. Our dynamic engine calculates real-time adjustments based on your specific operational requirements.</p>
+      </section>
+
+      <form id="presupuestoForm" novalidate>
+        <div class="budget-grid-container">
+          
+          <div class="config-column">
+            
+            <div class="step-card">
+              <div class="step-badge">00</div>
+              <div class="step-content">
+                <h3>Contact Authentication</h3>
+                <p class="step-desc">Provide validated user credentials to bind this proposal.</p>
+                
+                <div class="input-group-row">
+                  <div class="input-wrapper">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="John" required>
+                    <span class="error-msg" id="err-nombre"></span>
+                  </div>
+                  <div class="input-wrapper">
+                    <label for="apellidos">Apellidos</label>
+                    <input type="text" id="apellidos" name="apellidos" placeholder="Doe" required>
+                    <span class="error-msg" id="err-apellidos"></span>
+                  </div>
+                </div>
+
+                <div class="input-group-row" style="margin-top: 15px;">
+                  <div class="input-wrapper">
+                    <label for="telefono">Teléfono de contacto</label>
+                    <input type="tel" id="telefono" name="telefono" placeholder="600123456" required>
+                    <span class="error-msg" id="err-telefono"></span>
+                  </div>
+                  <div class="input-wrapper">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" name="email" placeholder="nnnnn_nn@zzzzz.xxx" required>
+                    <span class="error-msg" id="err-email"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-badge">01</div>
+              <div class="step-content">
+                <h3>Core Product Selection</h3>
+                <label class="base-tier-label" for="producto">BASE SERVICE TIER</label>
+                <div class="select-style-wrapper">
+                  <select id="producto" name="producto">
+                    <option value="5200" selected>Horological Master – Standard Operations ($5,200.00)</option>
+                    <option value="3500">Industrial Maintenance – Calibration Suite ($3,500.00)</option>
+                    <option value="7800">Enterprise Innovation – High-Scale System ($7,800.00)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-badge">02</div>
+              <div class="step-content">
+                <h3>Timeframe Optimization</h3>
+                <div class="duration-header">
+                  <span class="duration-label">Duration: <strong id="plazo-val">12 Months</strong></span>
+                  <span class="discount-badge" id="descuento-tag">Save 15% Annual</span>
+                </div>
+                
+                <div class="range-slider-container">
+                  <input type="range" id="plazo" name="plazo" min="1" max="36" value="12" step="1">
+                  <div class="range-ticks">
+                    <span>1 MONTH</span>
+                    <span>12 MONTHS</span>
+                    <span>24 MONTHS</span>
+                    <span>36 MONTHS</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-badge">03</div>
+              <div class="step-content">
+                <h3>Service Complications</h3>
+                <div class="complications-grid">
+                  
+                  <label class="checkbox-card">
+                    <input type="checkbox" name="extras" value="450" checked>
+                    <span class="checkbox-custom"></span>
+                    <span class="checkbox-label-block">
+                      <strong>Precision Reporting</strong>
+                      <span class="sub-txt">Weekly forensic-level performance metrics.</span>
+                      <span class="price-txt">+$450.00 / Mo</span>
+                    </span>
+                  </label>
+
+                  <label class="checkbox-card">
+                    <input type="checkbox" name="extras" value="800">
+                    <span class="checkbox-custom"></span>
+                    <span class="checkbox-label-block">
+                      <strong>24/7 Dial Support</strong>
+                      <span class="sub-txt">Direct connection to lead horologists anytime.</span>
+                      <span class="price-txt">+$800.00 / Mo</span>
+                    </span>
+                  </label>
+
+                  <label class="checkbox-card">
+                    <input type="checkbox" name="extras" value="220">
+                    <span class="checkbox-custom"></span>
+                    <span class="checkbox-label-block">
+                      <strong>Satellite Synchronization</strong>
+                      <span class="sub-txt">Automated atomic clock syncing for all nodes.</span>
+                      <span class="price-txt">+$220.00 / Mo</span>
+                    </span>
+                  </label>
+
+                  <label class="checkbox-card">
+                    <input type="checkbox" name="extras" value="1100">
+                    <span class="checkbox-custom"></span>
+                    <span class="checkbox-label-block">
+                      <strong>Obsidian Security Tier</strong>
+                      <span class="sub-txt">Hardened cryptographic layer for data.</span>
+                      <span class="price-txt">+$1,100.00 / Mo</span>
+                    </span>
+                  </label>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="step-card privacy-card">
+              <label class="privacy-checkbox-container">
+                <input type="checkbox" id="privacidad" name="privacidad" required>
+                <span class="checkbox-custom"></span>
+                <span class="privacy-text">He leído e incluyo la aceptación de las condiciones de privacidad y los términos de uso del servicio legal.</span>
+              </label>
+              <div class="form-buttons">
+                <button type="button" id="btn-reset" class="btn-secondary-custom">RESET FORMS</button>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="summary-column">
+            <div class="sticky-receipt-card">
+              <h3>Budget Allocation</h3>
+              
+              <div class="receipt-line">
+                <span>Selected Operations Base</span>
+                <span id="recibo-base">$0.00</span>
+              </div>
+              
+              <div class="receipt-line discount-line">
+                <span id="recibo-plazo-desc">Commitment Optimization</span>
+                <span id="recibo-descuento">-$0.00</span>
+              </div>
+
+              <div class="receipt-line">
+                <span>Service Complications</span>
+                <span id="recibo-extras">$0.00</span>
+              </div>
+
+              <div class="receipt-line">
+                <span>Tax & Regulatory (Est.)</span>
+                <span id="recibo-tax">$0.00</span>
+              </div>
+
+              <div class="receipt-divider"></div>
+
+              <div class="total-investment-block">
+                <span class="total-title">TOTAL INVESTMENT / MO</span>
+                <div class="total-amount-display">
+                  <span class="currency-symbol">$</span>
+                  <span id="recibo-total">0.00</span>
+                </div>
+              </div>
+
+              <button type="submit" class="btn-finalize">FINALIZE PROPOSAL & SYNC</button>
+
+              <div class="secure-badge">
+                <i class="fa-solid fa-lock"></i> ENCRYPTED PRECISION GUARANTEE
+              </div>
+            </div>
+
+            <div class="status-mini-cards">
+              <div class="mini-card">
+                <i class="fa-solid fa-circle-check icon-blue"></i>
+                <div>
+                  <h4>RESPONSE TIME</h4>
+                  <p>99.98% Latency Bound</p>
+                </div>
+              </div>
+              <div class="mini-card">
+                <i class="fa-solid fa-shield-halved icon-blue"></i>
+                <div>
+                  <h4>CERTIFICATION</h4>
+                  <p>ISO-27001 Grade</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </form>
+    </main>
+
+    <footer class="footer">
+      <h5>@2026 Precision Service Management. All rights reserved.</h5>
+    </footer>
   </div>
+
+  <script src="../js/script.js"></script>
 </body>
 </html>
