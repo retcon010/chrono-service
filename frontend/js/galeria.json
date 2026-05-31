@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "categoria": "industrial",
+    "titulo": "Heavy Machinery Calibration",
+    "descripcion": "Resource synchronization and mechanical alignment for heavy rotating components.",
+    "imagen": "https://images.unsplash.com/photo-1537462715879-360eeb61a0bc?q=80&w=800"
+  },
+  {
+    "id": 2,
+    "categoria": "innovation",
+    "titulo": "Microcircuitry & Logic Boards",
+    "descripcion": "Granular oversight of technical performance benchmarks and hardware integrations.",
+    "imagen": "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800"
+  },
+  {
+    "id": 3,
+    "categoria": "industrial",
+    "titulo": "Robotic Automation Arms",
+    "descripcion": "Deploying integrated precision systems for synchronized plant assembly lines.",
+    "imagen": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800"
+  },
+  {
+    "id": 4,
+    "categoria": "maintenance",
+    "titulo": "Data Suite Analytics",
+    "descripcion": "Real-time management tools and performance metric optimization dashboards.",
+    "imagen": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800"
+  },
+  {
+    "id": 5,
+    "categoria": "consulting",
+    "titulo": "Horological Core Assembly",
+    "descripcion": "Validating structural permanence and traditional micro-component alignment.",
+    "imagen": "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?q=80&w=800"
+  }
+]
