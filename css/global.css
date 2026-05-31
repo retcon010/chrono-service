@@ -1,0 +1,152 @@
+/* ==========================================================================
+   RESETEO UNIVERSAL Y AJUSTES DE CAJA
+   ========================================================================== */
+* {
+  box-sizing: border-box; /* Hace que el padding y el border no sumen ancho al tamaño total del elemento */
+  margin: 0;              /* Elimina los márgenes heredados por defecto de todos los navegadores */
+  padding: 0;             /* Elimina los rellenos heredados por defecto */
+}
+
+html, body {
+  height: 100%;           /* Garantiza que la estructura base ocupe toda la altura de la ventana */
+}
+
+/* ESTRATEGIA FLEXBOX: Fuerza al Footer a mantenerse siempre abajo si hay poco contenido */
+.site {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;      /* El contenedor padre ocupará como mínimo el 100% del alto de la pantalla */
+}
+
+.content {
+  flex: 1;                /* Esta zona se expande de forma elástica para empujar al footer hacia el fondo */
+}
+
+/* TIPOGRAFÍA Y ESTILOS BASE PARA ENLACES */
+li, a, button, h4 {
+  font-family: "Afacad", sans-serif;
+  text-decoration: none;  /* Quita el subrayado por defecto de todos los enlaces */
+}
+
+/* ==========================================================================
+   NAVBAR FIJO (BARRA DE NAVEGACIÓN SUPERIOR)
+   ========================================================================== */
+header {
+  position: fixed;        /* Mantiene la barra fija en la parte superior al hacer scroll */
+  top: 0;
+  left: 0;
+  width: 100%;            /* Asegura que cubra todo el ancho horizontal de la ventana */
+  display: flex;
+  justify-content: space-between; /* Distribuye el logo, el menú y el botón dejando espacio entre ellos */
+  align-items: center;    /* Alinea verticalmente todos los elementos del menú en el centro */
+  padding: 20px 10%;      /* Margen interno: 20px arriba/abajo y 10% de separación en los laterales */
+  background-color: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Sutil sombra inferior para dar efecto de flotado */
+  z-index: 100;           /* Prioridad de capa alta para que el menú siempre quede por encima de las fotos */
+}
+
+.logo h1 {
+  font-size: 24px;
+  color: var(--color-primary); /* Usa el color principal corporativo guardado en variables.css */
+}
+
+.nav_links {
+  list-style: none;       /* Quita los puntos negros o viñetas de la lista de navegación */
+}
+
+.nav_links li {
+  display: inline-block;  /* Convierte los elementos de la lista en bloques horizontales contiguos */
+  padding: 0 20px;        /* Separación horizontal de 20px entre cada pestaña del menú */
+}
+
+.nav_links li a {
+  color: #000000;
+  font-weight: 500;
+  transition: color 0.3s ease; /* Transición suave de 0.3 segundos para el cambio de color al pasar el ratón */
+}
+
+.nav_links li a:hover {
+  color: var(--color-primary); /* El enlace cambia al color primario en el estado hover */
+}
+
+/* ESTILOS DE LOS BOTONES CORPORATIVOS (TIPO CALL TO ACTION) */
+button {
+  padding: 9px 25px;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;           /* Quita el borde gris tosco que traen los botones por defecto */
+  border-radius: 50px;    /* Bordes completamente redondeados (estilo píldora) */
+  cursor: pointer;        /* Cambia el cursor a una mano al pasar por encima indicando que es clickeable */
+  font-weight: 500;
+  transition: background-color 0.3s ease; /* Transición suave para el cambio de tono de fondo */
+}
+
+button:hover {
+  background-color: var(--color-secondary); /* Oscurece o cambia el fondo al color secundario */
+}
+
+/* ==========================================================================
+   SECCIÓN DEL PIE DE PÁGINA (FOOTER)
+   ========================================================================== */
+.container {
+  max-width: 1200px;      /* Centra y limita el ancho máximo del contenido interior del footer */
+  margin: 0 auto;
+}
+
+.footer {
+  background-color: #e5e7eb; /* Color gris claro de fondo para el footer */
+  padding: 35px 0;
+  width: 100%;
+}
+
+.footer-row {
+  display: flex;
+  flex-wrap: wrap;        /* Permite que las columnas bajen a la siguiente línea en pantallas pequeñas */
+}
+
+.footer-links {
+  width: 33.33%;          /* Distribuye el espacio en 3 columnas reales idénticas */
+  padding: 0 15px;        /* Separación de seguridad a los lados de cada columna */
+}
+
+.footer-links h4 {
+  font-size: 16px;
+  color: #000000;
+  font-weight: 700;
+  margin-bottom: 25px;
+  border-bottom: 2px solid var(--color-primary); /* Subrayado estético usando el color primario de la marca */
+  padding-bottom: 10px;
+  display: inline-block;  /* Hace que la línea inferior mida solo lo que mide el texto del título */
+}
+
+.footer-links ul li {
+  font-size: 14px;
+  list-style: none;
+  color: var(--color-secondary);
+  line-height: 1.6;       /* Interlineado para que los textos largos se lean de forma cómoda */
+  margin-bottom: 10px;    /* Espacio de separación vertical entre enlaces del footer */
+}
+
+.footer-links ul li a {
+  color: var(--color-secondary);
+  transition: all 0.3s ease;
+}
+
+/* Efecto dinámico al pasar el ratón sobre los enlaces del Footer */
+.footer-links ul li a:hover {
+  color: var(--color-primary);
+  padding-left: 6px;      /* Pequeño desplazamiento hacia la derecha como efecto de selección interactiva */
+}
+
+hr {
+  margin: 20px 0;
+  border: 0;
+  border-top: 1px solid var(--color-tertiary); /* Línea fina de división antes del copyright */
+}
+
+h5 {
+  text-align: center;     /* Centra el texto del Copyright al fondo de la web */
+  font-family: "Afacad", sans-serif;
+  color: var(--color-secondary);
+  font-weight: 400;
+}
