@@ -1,458 +1,384 @@
 /* ==========================================================================
-   DISEÑO DE LA INTRODUCCIÓN (PÁGINA DE VALORACIÓN)
+   CONFIGURACIÓN GENERAL Y MAQUETACIÓN DE LA PÁGINA DE CONTACTO
    ========================================================================== */
-.valuation-intro {
-  padding: 60px 10% 20px 10%;
-  background-color: var(--color-main);
+body {
+  background-color: #f4f7f9;
+  color: #1e293b;
 }
 
-.section-subtitle {
+/* SECCIÓN HERO (ENCABEZADO DE PORTADA DE CONTACTO) */
+.contact-hero {
+  /* Combinación de degradado sutil con imagen de fondo de Unsplash */
+  background: linear-gradient(rgba(244, 247, 249, 0.88), rgba(244, 247, 249, 0.95)), 
+              url('https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1200') no-repeat center center;
+  background-size: cover;
+  padding: 80px 8% 40px 8%;
+}
+
+.hero-content {
+  max-width: 600px;
+}
+
+.subtitle {
   font-family: "Afacad", sans-serif;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 1.5px;
-  color: #516176;
-  margin-bottom: 10px;
-}
-
-.section-title {
-  font-family: "Afacad", sans-serif;
-  font-size: 40px;
-  color: #1c2d42;
-  line-height: 1.1;
-  font-weight: 700;
-  margin-top: 50px;
-  margin-bottom: 20px;
-}
-
-.section-lead {
-  font-family: "Afacad", sans-serif;
-  font-size: 16px;
-  color: var(--color-secondary);
-  max-width: 500px;
-  line-height: 1.5;
-}
-
-/* CONTENEDOR GRID: Divide el formulario y el recibo lateral */
-.budget-grid-container {
-  display: grid;
-  grid-template-columns: 1.6fr 1fr; /* El formulario toma más peso visual que el recibo */
-  gap: 40px;
-  padding: 20px 10% 80px 10%;
-  align-items: flex-start; /* Evita que el recibo se estire verticalmente de forma artificial */
-}
-
-/* DISEÑO DE TARJETAS POR PASOS (ESTRUCTURA DEL FORMULARIO) */
-.step-card {
-  background: #ffffff;
-  border-radius: 6px;
-  padding: 35px;
-  margin-bottom: 25px;
-  display: flex;
-  gap: 25px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-  border: 1px solid #eef2f6;
-}
-
-/* Indicador numérico circular izquierdo */
-.step-badge {
-  background: #e1e7ec;
-  color: #1c2d42;
-  font-family: monospace;
-  font-size: 14px;
-  font-weight: 700;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0; /* Impide que el círculo se deforme al reducirse el espacio */
-}
-
-.step-content {
-  flex: 1;
-}
-
-.step-content h3 {
-  font-family: "Afacad", sans-serif;
-  font-size: 20px;
-  color: #1c2d42;
-  margin-bottom: 15px;
-}
-
-.step-desc {
-  font-family: "Afacad", sans-serif;
-  font-size: 13px;
-  color: #72849a;
-  margin-bottom: 20px;
-}
-
-/* PASO DE VALIDACIÓN DE ENTRADAS DE CONTACTO */
-.input-group-row {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap; /* Impide el colapso horizontal de los campos en pantallas intermedias */
-}
-
-.input-wrapper {
-  flex: 1;
-  min-width: 200px; /* Determina el ancho mínimo antes de que el campo salte de línea */
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.input-wrapper label {
-  font-family: "Afacad", sans-serif;
-  font-size: 11px;
-  font-weight: 700;
+  color: #64748b;
   text-transform: uppercase;
-  color: #72849a;
-  letter-spacing: 0.5px;
-}
-
-.input-wrapper input {
-  font-family: "Afacad", sans-serif;
-  padding: 12px;
-  border: 1px solid #cbd5df;
-  border-radius: 4px;
-  font-size: 14px;
-  color: #1c2d42;
-  outline: none;
-  background-color: #fbfcfd;
-  transition: border-color 0.2s;
-}
-
-.input-wrapper input:focus {
-  border-color: var(--color-primary);
-}
-
-.error-msg {
-  font-family: "Afacad", sans-serif;
-  font-size: 11px;
-  color: #d93838;
-  margin-top: 10px;
-  min-height: 14px; /* Reserva espacio estructural para evitar saltos bruscos cuando aparece el mensaje */
-}
-
-/* MENÚ DESPLEGABLE (PASO 01) */
-.base-tier-label {
-  font-family: "Afacad", sans-serif;
-  font-size: 10px;
-  font-weight: 700;
-  color: var(--color-primary);
-  letter-spacing: 1px;
-  display: block;
   margin-bottom: 8px;
 }
 
-.select-style-wrapper select {
+.contact-hero h2 {
   font-family: "Afacad", sans-serif;
-  width: 100%;
-  padding: 15px;
-  border: 1px solid #cbd5df;
-  border-radius: 4px;
-  background-color: #f8fafc;
+  font-size: 42px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 20px;
+}
+
+.accent-text {
+  color: #2b4360; /* Tono azul para resaltar palabras clave en el título */
+}
+
+.description {
+  font-family: "Afacad", sans-serif;
   font-size: 15px;
-  color: #1c2d42;
-  cursor: pointer;
-  appearance: none; /* Suprime la flecha por defecto del sistema para estilización propia */
-  -webkit-appearance: none;
-  -moz-appearance: none;
+  line-height: 1.6;
+  color: #475569;
 }
 
-/* DESLIZADOR RANGO DE DURACIÓN (PASO 02) */
-.duration-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 15px;
-  align-items: center;
+/* CONTENEDOR PRINCIPAL: Distribuye el formulario y la información corporativa */
+.contact-body-container {
+  padding: 0 8% 80px 8%;
 }
 
-.duration-header span {
-  font-family: "Afacad", sans-serif;
-}
-
-.discount-badge {
-  font-family: "Afacad", sans-serif;
-  background-color: #fce8e6;
-  color: #c53030;
-  padding: 4px 10px;
-  border-radius: 12px;
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.range-slider-container input[type="range"] {
-  width: 100%;
-  margin-bottom: 10px;
-  cursor: pointer;
-}
-
-.range-ticks {
-  display: flex;
-  justify-content: space-between;
-  font-size: 11px;
-  color: #9cb1c9;
-  font-weight: 600;
-}
-
-/* CASILLAS DE SELECCIÓN DE COMPLICACIONES (PASO 03) */
-.complications-grid {
+.container-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 15px;
+  grid-template-columns: 1.6fr 1fr; /* El formulario ocupa mayor espacio que la barra lateral */
+  gap: 50px;
+  align-items: start; /* Mantiene la barra lateral compacta arriba en lugar de estirarse */
 }
 
-.checkbox-card {
-  display: flex;
-  align-items: flex-start;
-  gap: 15px;
-  padding: 18px;
-  border: 1px solid #e2e8ed;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.checkbox-card:hover {
-  background-color: #fbfcfd;
-}
-
-.checkbox-card input[type="checkbox"] {
-  margin-top: 4px;
-  cursor: pointer;
-}
-
-.checkbox-label-block {
-  display: flex;
-  flex-direction: column;
-  font-family: "Afacad", sans-serif;
-}
-
-.checkbox-label-block strong {
-  font-size: 15px;
-  color: #1c2d42;
-}
-
-.sub-txt {
-  font-size: 12px;
-  color: #72849a;
-  margin: 4px 0 6px 0;
-}
-
-.price-txt {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--color-primary);
-}
-
-/* ==========================================================================
-   RECIBO FLOTANTE DERECHO (BUDGET ALLOCATION)
-   ========================================================================== */
-.sticky-receipt-card {
+/* TARJETA BLANCA DEL FORMULARIO DE CONTACTO */
+.form-card {
   background: #ffffff;
-  border: 1px solid #eef2f6;
-  border-radius: 6px;
   padding: 40px;
-  box-shadow: 0 10px 30px rgba(28,45,66,0.04);
-  position: sticky; /* Mantiene la tarjeta fija al hacer scroll por el formulario */
-  top: 40px;          /* Separación superior respetando el margen de navegación */
+  border-radius: 4px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
 }
 
-.sticky-receipt-card h3 {
+.form-card h3 {
   font-family: "Afacad", sans-serif;
   font-size: 22px;
-  color: #1c2d42;
-  margin-bottom: 25px;
+  color: #0f172a;
+  margin-bottom: 6px;
 }
 
-.receipt-line {
+.form-sub {
   font-family: "Afacad", sans-serif;
-  display: flex;
-  justify-content: space-between;
-  font-size: 14px;
-  color: #516176;
-  margin-bottom: 18px;
-}
-
-.discount-line {
-  color: #c53030;
-}
-
-.receipt-divider {
-  height: 1px;
-  background-color: #e2e8ed;
-  margin: 25px 0;
-}
-
-.total-investment-block {
+  font-size: 13px;
+  color: #64748b;
   margin-bottom: 30px;
 }
 
-.total-title {
-  font-family: "Afacad", sans-serif;
-  font-size: 11px;
-  font-weight: 700;
-  color: #72849a;
-  letter-spacing: 1px;
-}
-
-.total-amount-display {
-  font-family: "Afacad", sans-serif;
-  display: flex;
-  align-items: flex-start;
-  font-size: 44px;
-  font-weight: 700;
-  color: #1c2d42;
-  line-height: 1;
-  margin-top: 5px;
-}
-
-.currency-symbol {
-  font-size: 24px;
-  margin-right: 4px;
-  margin-top: 4px;
-}
-
-.btn-finalize {
-  font-family: "Afacad", sans-serif;
-  width: 100%;
-  padding: 16px;
-  background-color: #3b526e;
-  color: #ffffff;
-  border: none;
-  border-radius: 4px;
-  font-weight: 600;
-  font-size: 14px;
-  letter-spacing: 0.5px;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.btn-finalize:hover {
-  background-color: #1c2d42;
-}
-
-.secure-badge {
-  font-family: "Afacad", sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  font-size: 11px;
-  font-weight: 700;
-  color: #9cb1c9;
-  margin-top: 25px;
-}
-
-/* MÓDULOS DE ESTADO INFERIORES */
-.status-mini-cards {
-  margin-top: 25px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.mini-card {
-  background-color: #f1f4f7;
-  padding: 15px 20px;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.icon-blue {
-  color: #3b526e;
-  font-size: 18px;
-}
-
-.mini-card h4 {
-  font-family: "Afacad", sans-serif;
-  font-size: 11px;
-  font-weight: 700;
-  color: #72849a;
-}
-
-.mini-card p {
-  font-family: "Afacad", sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  color: #1c2d42;
-}
-
-/* PANEL DE PRIVACIDAD */
-.privacy-card {
-  flex-direction: column;
+/* Fila interna doble para campos cortos (ej. Nombre y Apellidos) */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
 
-.privacy-checkbox-container {
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  font-family: "Afacad", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #334155;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+/* Estilo minimalista: inputs sin bordes, solo una línea inferior */
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+  font-family: "Afacad", sans-serif; /* Mantiene consistencia tipográfica en inputs nativos */
+  padding: 12px 0;
+  border: none;
+  border-bottom: 1px solid #cbd5e1;
+  font-size: 14px;
+  color: #1e293b;
+  background: transparent;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-group textarea {
+  resize: vertical; /* Permite estirar hacia abajo sin romper el ancho de la tarjeta */
+  min-height: 80px;
+}
+
+/* Cambio de color de la línea inferior al hacer foco en un campo */
+.form-group input:focus, 
+.form-group select:focus, 
+.form-group textarea:focus {
+  border-bottom: 1px solid #2b4360;
+}
+
+/* Botón de envío alineado de forma segura usando Flexbox */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.btn-dispatch {
+  font-family: "Afacad", sans-serif;
+  background-color: #2b4360;
+  color: #ffffff;
+  border: none;
+  padding: 14px 28px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-dispatch:hover {
+  background-color: #1e3046;
+}
+
+/* BARRA LATERAL (DATOS CORPORATIVOS DE LA EMPRESA) */
+.info-sidebar {
+  padding-left: 20px;
+}
+
+.info-block {
+  margin-bottom: 35px;
+}
+
+.info-label {
+  font-family: "Afacad", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #2b4360;
+  margin-bottom: 15px;
+}
+
+.info-data {
   font-family: "Afacad", sans-serif;
   display: flex;
-  gap: 12px;
-  cursor: pointer;
-  font-size: 13px;
-  color: #516176;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 14px;
+  font-size: 14px;
+  color: #334155;
 }
 
-.btn-secondary-custom {
+.icon-blue {
+  color: #2b4360;
+  margin-top: 3px;
+  width: 16px;
+}
+
+/* Iconos de Redes Sociales al fondo de la barra lateral */
+.sidebar-footer-icons {
+  display: flex;
+  gap: 20px;
+  margin-top: 50px;
+  color: #64748b;
+  font-size: 16px;
+}
+
+.sidebar-footer-icons a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.sidebar-footer-icons a:hover {
+  color: #2b4360;
+}
+
+
+/* ==========================================================================
+   SECCIÓN DEL MAPA INTERACTIVO Y ENRUTAMIENTO (API DE MAPAS)
+   ========================================================================== */
+.map-section {
+  background-color: #e3ebf0;
+}
+
+.map-layout-grid {
+  display: grid;
+  grid-template-columns: 350px 1fr; /* Panel de control lateral de ancho fijo y mapa expansivo */
+  min-height: 550px;
+}
+
+/* PANEL DE CONTROL IZQUIERDO (CALCULADOR DE RUTAS) */
+.route-panel {
+  background-color: #e3ebf0;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.route-panel h3 {
   font-family: "Afacad", sans-serif;
-  padding: 10px 20px;
-  background: none;
-  border: 1px solid #cbd5df;
-  border-radius: 4px;
-  color: #72849a;
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s;
+  font-size: 24px;
+  color: #1e293b;
+  margin-bottom: 30px;
 }
 
-.btn-secondary-custom:hover {
+.route-input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.route-input-group label {
+  font-family: "Afacad", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: #516a85;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+/* Inputs contenedores que incluyen un icono en su interior */
+.input-with-icon {
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  border-radius: 4px;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+/* Estado de bloqueo para inputs de destino prefijados */
+.disabled-input {
   background-color: #f1f5f9;
-  color: #1c2d42;
+}
+
+.icon-input {
+  color: #64748b;
+  font-size: 12px;
+  margin-right: 10px;
+}
+
+.input-with-icon input {
+  font-family: "Afacad", sans-serif;
+  border: none;
+  padding: 12px 0;
+  width: 100%;
+  font-size: 13px;
+  background: transparent;
+  outline: none;
+}
+
+.btn-route {
+  font-family: "Afacad", sans-serif;
+  background-color: #2b4360;
+  color: white;
+  border: none;
+  padding: 14px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Selectores de modo de transporte (Coche, Transporte público, etc.) */
+.transport-modes {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.mode-btn {
+  font-family: "Afacad", sans-serif;
+  background: white;
+  border: none;
+  flex: 1;
+  padding: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #64748b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estado activo para el tipo de transporte seleccionado */
+.mode-btn.active {
+  box-shadow: inset 0 0 0 1px #2b4360; /* Aplica un borde interno estético */
+  color: #2b4360;
+}
+
+/* CAJA DE RESULTADOS ASÍNCRONOS (CONECTADA MEDIANTE SCRIPT A LA API DEL MAPA) */
+.route-result-box {
+  font-family: "Afacad", sans-serif;
+  margin-top: 20px;
+  background: white;
+  padding: 15px;
+  border-radius: 4px;
+  border-left: 4px solid #2b4360; /* Línea distintiva lateral */
+  font-size: 13px;
+  line-height: 1.4;
+  animation: fadeIn 0.3s ease; /* Transición de aparición suave al completarse la ruta */
+}
+
+.hidden { display: none; } /* Oculta elementos del DOM de forma segura */
+
+/* LIENZO O ELEMENTO DE INYECCIÓN DEL MAPA (Leaflet / Google Maps) */
+#map {
+  width: 100%;
+  height: 100%;
+  background-color: #0b1d28; 
+}
+
+/* Animación de entrada para los resultados dinámicos */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* ==========================================================================
    DISEÑO ADAPTATIVO (MEDIA QUERIES)
    ========================================================================== */
-@media (max-width: 990px) {
-  .budget-grid-container { 
-    grid-template-columns: 1fr; /* Coloca el panel del recibo abajo del formulario */
-    padding: 10px 5% 60px 5%;
+@media (max-width: 900px) {
+  /* Convierte las rejillas del formulario y del mapa en una única columna vertical */
+  .container-grid, .map-layout-grid {
+    grid-template-columns: 1fr;
   }
-  
-  .valuation-intro {
-    padding: 40px 5% 10px 5%;
-  }
-
-  .sticky-receipt-card {
-    position: static; /* El recibo pierde la propiedad flotante y se integra en el flujo común */
+  .info-sidebar {
+    padding-left: 0;
     margin-top: 20px;
-    padding: 30px 20px;
   }
+  #map { min-height: 350px; } /* Mantiene una altura fija mínima para el mapa en móviles */
 }
 
-@media (max-width: 600px) {
-  .step-card {
-    flex-direction: column; /* El dígito del paso se sitúa sobre el cuerpo del texto en móviles */
-    gap: 15px;
-    padding: 25px 20px;
-  }
+/* Ajustes estéticos específicos para iconos dentro de los botones de transporte */
+.transport-modes .mode-btn i {
+  font-size: 16px;
+  display: inline-block;
+  color: #64748b; 
+}
 
-  .step-badge {
-    width: 28px;
-    height: 28px;
-    font-size: 12px;
-  }
-  
-  .input-group-row {
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .input-wrapper {
-    width: 100%;
-  }
+.transport-modes .mode-btn.active i {
+  color: #2b4360; 
 }
