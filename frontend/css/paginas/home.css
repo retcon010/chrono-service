@@ -534,3 +534,100 @@
     gap: 40px;
   }
 }
+
+/* --- TESTIMONIAL & PARTNERS SECTION --- */
+.testimonial-partners {
+  background-color: #e3ebf0; /* Fondo azul grisáceo suave exacto */
+  padding: 90px 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.testimonial-container {
+  max-width: 850px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Icono estilizado de comillas */
+.quote-icon {
+  font-size: 36px;
+  color: #2b4360; /* Azul corporativo oscuro */
+  margin-bottom: 25px;
+  opacity: 0.95;
+}
+
+/* Cuerpo de la cita bibliográfica */
+.testimonial-text {
+  font-family: "Afacad", sans-serif;
+  font-size: 26px;
+  font-weight: 400;
+  font-style: italic;
+  color: #334155; /* Texto oscuro suave para alta legibilidad */
+  line-height: 1.45;
+  margin: 0 0 30px 0;
+  letter-spacing: -0.3px;
+}
+
+/* Firma del autor */
+.testimonial-author h4 {
+  font-family: "Afacad", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 4px;
+}
+
+.author-role {
+  font-family: "Afacad", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #516a85; /* Tono intermedio para jerarquía */
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 65px; /* Espacio extra antes de los logos */
+}
+
+/* Grid horizontal para logotipos corporativos */
+.partners-logo-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px; /* Separación simétrica de las firmas */
+  flex-wrap: wrap;
+  width: 100%;
+  border-top: 1px solid rgba(0, 0, 0, 0.04); /* Línea de división casi invisible opcional */
+  padding-top: 20px;
+}
+
+.partner-logo-item {
+  font-family: "Afacad", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #94a3b8; /* Gris muted idéntico para simular marcas */
+  letter-spacing: 2px;
+  user-select: none;
+  transition: color 0.2s ease;
+}
+
+/* Pequeño extra interactivo elegante */
+.partner-logo-item:hover {
+  color: #475569;
+}
+
+/* Ajuste responsivo para pantallas móviles o tablets en DeX */
+@media (max-width: 640px) {
+  .testimonial-text {
+    font-size: 20px;
+  }
+  .partners-logo-grid {
+    gap: 35px;
+  }
+  .partner-logo-item {
+    font-size: 17px;
+  }
+}
