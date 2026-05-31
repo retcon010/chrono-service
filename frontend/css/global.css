@@ -1,32 +1,49 @@
-/* Reseteo Universal */
+/* ==========================================
+   RESET GLOBAL DE ESTILOS
+   ========================================== */
+/* Elimina márgenes y padding por defecto del navegador
+   y asegura un modelo de caja consistente */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+/* Asegura que la página ocupe toda la altura del viewport */
 html, body {
   height: 100%;
 }
 
-/* Forzar Footer Abajo con Flexbox */
+/* ==========================================
+   ESTRUCTURA PRINCIPAL DEL LAYOUT
+   ========================================== */
+
+/* Contenedor principal de la web */
 .site {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
+/* Contenido principal que empuja el footer hacia abajo */
 .content {
   flex: 1;
 }
 
-/* Tipografía y Enlaces Base */
+/* ==========================================
+   ESTILOS BASE DE TIPOGRAFÍA
+   ========================================== */
+
+/* Tipografía general para elementos comunes */
 li, a, button, h4 {
   font-family: "Afacad", sans-serif;
   text-decoration: none;
 }
 
-/* --- NAVBAR FIJO --- */
+/* ==========================================
+   BARRA DE NAVEGACIÓN (HEADER FIJO)
+   ========================================== */
+
 header {
   position: fixed;
   top: 0;
@@ -41,29 +58,38 @@ header {
   z-index: 100;
 }
 
+/* Logo principal del sitio */
 .logo h1 {
   font-size: 24px;
   color: var(--color-primary);
 }
 
+/* Lista de navegación */
 .nav_links {
   list-style: none;
 }
 
+/* Elementos del menú de navegación */
 .nav_links li {
   display: inline-block;
   padding: 0 20px;
 }
 
+/* Enlaces del menú */
 .nav_links li a {
   color: #000000;
   font-weight: 500;
   transition: color 0.3s ease;
 }
 
+/* Efecto hover en enlaces */
 .nav_links li a:hover {
   color: var(--color-primary);
 }
+
+/* ==========================================
+   BOTONES GLOBALES
+   ========================================== */
 
 button {
   padding: 9px 25px;
@@ -76,32 +102,41 @@ button {
   transition: background-color 0.3s ease;
 }
 
+/* Efecto hover de botones */
 button:hover {
   background-color: var(--color-secondary);
 }
 
-/* --- FOOTER --- */
+/* ==========================================
+   FOOTER (PIE DE PÁGINA)
+   ========================================== */
+
+/* Contenedor centrado del footer */
 .container {
   max-width: 1200px;
   margin: 0 auto;
 }
 
+/* Fondo y padding general del footer */
 .footer {
-  background-color: #e5e7eb; /* Gris claro para el footer */
+  background-color: #e5e7eb;
   padding: 35px 0;
   width: 100%;
 }
 
+/* Estructura en filas del footer */
 .footer-row {
   display: flex;
   flex-wrap: wrap;
 }
 
+/* Columnas del footer */
 .footer-links {
-  width: 33.33%; /* Ajustado a 3 columnas reales como tu HTML */
+  width: 33.33%;
   padding: 0 15px;
 }
 
+/* Títulos de cada bloque del footer */
 .footer-links h4 {
   font-size: 16px;
   color: #000000;
@@ -112,6 +147,7 @@ button:hover {
   display: inline-block;
 }
 
+/* Listado de enlaces o texto del footer */
 .footer-links ul li {
   font-size: 14px;
   list-style: none;
@@ -120,22 +156,26 @@ button:hover {
   margin-bottom: 10px;
 }
 
+/* Enlaces del footer */
 .footer-links ul li a {
   color: var(--color-secondary);
   transition: all 0.3s ease;
 }
 
+/* Hover de enlaces del footer */
 .footer-links ul li a:hover {
   color: var(--color-primary);
   padding-left: 6px;
 }
 
+/* Separador horizontal */
 hr {
   margin: 20px 0;
   border: 0;
   border-top: 1px solid var(--color-tertiary);
 }
 
+/* Texto final de copyright */
 h5 {
   text-align: center;
   font-family: "Afacad", sans-serif;
