@@ -1,110 +1,71 @@
 document.addEventListener("DOMContentLoaded", function () {
-
-    // ==========================================
-    // INICIALIZACIÓN GENERAL DEL SCRIPT
-    // ==========================================
-    // Todo el código se ejecuta cuando el DOM está completamente cargado
-    // para asegurar que todos los elementos HTML existan antes de manipularlos.
-
-    // ==========================================
-    // LÓGICA 1: MAPA INTERACTIVO (LEAFLET.JS)
-    // ==========================================
-
+    
+    // ==========================================================================
+    // LÓGICA DEL MAPA INTERACTIVO (LEAFLET.JS)
+    // ==========================================================================
     const mapContainer = document.getElementById('map');
-
+    
     if (mapContainer) {
+        / * 1. COORDENADAS DEL NEGOCIO (Ginebra, Suiza - 24 Horology Row) * /
+        const businessCoords = [46.2044, 6.1432]; 
 
-        // ==========================================
-        // COORDENADAS DE LA EMPRESA
-        // ==========================================
-        // Ubicación fija del taller central en Ginebra (Suiza)
-        const businessCoords = [46.2044, 6.1432];
-
-        // ==========================================
-        // INICIALIZACIÓN DEL MAPA
-        // ==========================================
-        // Se utiliza Leaflet con mapas de OpenStreetMap / CartoDB
+        / * 2. INICIALIZAR EL MAPA DINÁMICO (Usa OpenStreetMap - Sin necesidad de claves API) * /
         const map = L.map('map').setView(businessCoords, 14);
 
+        // Capa de diseño visual del mapa (Estilo claro y limpio adaptado a la estética corporativa)
         L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
-            attribution: '&copy; OpenStreetMap & CARTO'
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> colaboradores &copy; <a href="https://carto.com/attributions">CARTO</a>'
         }).addTo(map);
 
-        // Marcador principal de la empresa en el mapa
-        L.marker(businessCoords)
-            .addTo(map)
-            .bindPopup('<b>Chronos Atelier Headquarters</b><br>24 Horology Row, Geneva.')
+        // Añadir el marcador físico del taller dentro del mapa interactivo
+        L.marker(businessCoords).addTo(map)
+            .bindPopup('<b>Sede Central de Chronos Atelier</b><br>24 Horology Row, Ginebra.')
             .openPopup();
 
-        // ==========================================
-        // VARIABLE DE RUTA ACTIVA
-        // ==========================================
-        // Almacena la línea de ruta actual para poder eliminarla y recalcularla
+        // Variable global interna para almacenar de forma segura el trazado de la ruta anterior
         let currentRouteLine = null;
 
-        // ==========================================
-        // LÓGICA 2: CÁLCULO DE RUTAS
-        // ==========================================
-
+        / * 3. MECANISMO DE CÁLCULO DE RUTAS DINÁMICAS * /
         const calculateBtn = document.getElementById("calculateRouteBtn");
         const locationInput = document.getElementById("userLocation");
         const resultBox = document.getElementById("routeResult");
 
+        // Asegurar que los elementos del DOM existen antes de asignar los escuchadores de rutas
         if (calculateBtn && locationInput && resultBox) {
-
             calculateBtn.addEventListener("click", function () {
-
-                // Ciudad introducida por el usuario
                 const userCity = locationInput.value.trim();
 
-                // Validación básica de entrada
                 if (userCity === "") {
-                    alert("Please enter a departure city to calculate the route.");
+                    alert("Por favor, introduzca una ciudad de origen para calcular la ruta.");
                     return;
                 }
 
-                // ==========================================
-                // COORDENADAS SIMULADAS DE ORIGEN
-                // ==========================================
-                // Se simulan puntos de origen para distintas ciudades
-                let startCoords = [48.8566, 2.3522]; // París por defecto
+                // Geocodificación simulada para trazar rutas desde puntos clave europeos
+                let startCoords = [48.8566, 2.3522]; // Valor por defecto en caso de fallo: París, Francia
                 let kmDistance = "540 km";
                 let duration = "5h 15 min";
 
-                // Ajuste dinámico según la ciudad introducida
+                // Mapeo condicional de rutas simuladas según la entrada del usuario
                 if (userCity.toLowerCase().includes("mil")) {
-                    startCoords = [45.4642, 9.1900]; // Milán
+                    startCoords = [45.4642, 9.1900]; // Milán, Italia
                     kmDistance = "318 km";
                     duration = "3h 45 min";
-
-                } else if (
-                    userCity.toLowerCase().includes("barc") ||
-                    userCity.toLowerCase().includes("lleida")
-                ) {
-                    startCoords = [41.3851, 2.1734]; // Barcelona / Lleida
+                } else if (userCity.toLowerCase().includes("barc") || userCity.toLowerCase().includes("lleida")) {
+                    startCoords = [41.3851, 2.1734]; // Punto de entrada Barcelona / Lleida
                     kmDistance = "790 km";
                     duration = "7h 50 min";
-
-                } else if (
-                    userCity.toLowerCase().includes("zur") ||
-                    userCity.toLowerCase().includes("zúrich")
-                ) {
-                    startCoords = [47.3769, 8.5417]; // Zúrich
+                } else if (userCity.toLowerCase().includes("zur") || userCity.toLowerCase().includes("zúrich")) {
+                    startCoords = [47.3769, 8.5417]; // Zúrich, Suiza
                     kmDistance = "278 km";
                     duration = "2h 50 min";
                 }
 
-                // ==========================================
-                // LIMPIEZA DE RUTA ANTERIOR
-                // ==========================================
-                // Evita superposición de rutas en el mapa
+                // Eliminar el trazado de la ruta anterior en el mapa si ya existía uno
                 if (currentRouteLine) {
                     map.removeLayer(currentRouteLine);
                 }
 
-                // ==========================================
-                // DIBUJO DE NUEVA RUTA
-                // ==========================================
+                // Dibujar la línea poligonal dinámica (Polyline) con el color azul corporativo
                 currentRouteLine = L.polyline([startCoords, businessCoords], {
                     color: '#2b4360',
                     weight: 4,
@@ -112,49 +73,37 @@ document.addEventListener("DOMContentLoaded", function () {
                     opacity: 0.8
                 }).addTo(map);
 
-                // Ajusta el mapa para mostrar toda la ruta
+                // Auto-ajustar los límites del mapa para encuadrar al cliente y a la sede perfectamente
                 const bounds = L.latLngBounds([startCoords, businessCoords]);
                 map.fitBounds(bounds, { padding: [50, 50] });
 
-                // ==========================================
-                // MOSTRAR RESULTADOS DE RUTA
-                // ==========================================
+                // Renderizar la plantilla con la información calculada dentro del panel lateral
                 resultBox.innerHTML = `
-                    <strong>Route successfully calculated:</strong><br>
-                    <i class="fa-solid fa-road"></i> <b>Distance:</b> ${kmDistance}<br>
-                    <i class="fa-solid fa-clock"></i> <b>Estimated Time:</b> ${duration} (via A1)
+                    <strong>Ruta calculada con éxito:</strong><br>
+                    <i class="fa-solid fa-road"></i> <b>Distancia:</b> ${kmDistance}<br>
+                    <i class="fa-solid fa-clock"></i> <b>Tiempo estimado:</b> ${duration} (por A1)
                 `;
-
                 resultBox.classList.remove("hidden");
             });
         }
     }
 
-    // ==========================================
-    // LÓGICA 3: ENVÍO DEL FORMULARIO DE CONTACTO
-    // ==========================================
-
+    // ==========================================================================
+    // GESTIÓN DEL ENVÍO DEL FORMULARIO DE CONTACTO
+    // ==========================================================================
     const serviceForm = document.getElementById("serviceForm");
-
+    
     if (serviceForm) {
-
         serviceForm.addEventListener("submit", function (e) {
-            e.preventDefault();
-
-            // Datos del formulario
+            e.preventDefault(); // Detener el envío tradicional del formulario
+            
             const name = document.getElementById("fullName").value;
             const subjectSelect = document.getElementById("subject");
             const subjectText = subjectSelect.options[subjectSelect.selectedIndex].text;
 
-            // ==========================================
-            // CONFIRMACIÓN DE ENVÍO
-            // ==========================================
-            // Mensaje de confirmación simulado tras el envío
-            alert(`Thank you, ${name}! Your request regarding "${subjectText}" has been successfully processed by our technical department.`);
-
-            // Reinicio del formulario tras el envío
-            serviceForm.reset();
+            // Alerta de confirmación traducida al castellano para dar feedback al usuario
+            alert(`¡Muchas gracias, ${name}! Tu solicitud sobre "${subjectText}" ha sido procesada correctamente por nuestro departamento técnico.`);
+            serviceForm.reset(); // Limpiar todos los campos del formulario tras el éxito
         });
     }
-
-}); // Fin del DOMContentLoaded
+});
