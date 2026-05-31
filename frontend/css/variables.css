@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&display=swap');
+
+:root {
+  /* Tus variables de paleta de colores */
+  --color-primary: #456084;
+  --color-secondary: #516176;
+  --color-tertiary: #DBE4E7;
+  --color-neutral: #F1F4F6;
+  --color-main: #F8F9FB;
+}
