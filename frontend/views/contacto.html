@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contacto - Chrono Service</title>
+  <link rel="stylesheet" href="../css/variables.css">
   <link rel="stylesheet" href="../css/global.css">
   <link rel="stylesheet" href="../css/paginas/contacto.css">
   <script src="https://kit.fontawesome.com/71b2d07671.js" crossorigin="anonymous"></script>
@@ -135,8 +136,15 @@
           </button>
 
           <div class="transport-modes">
-            <button class="mode-btn active"><i class="fa-solid fa-train"></i></button>
-            <button class="mode-btn"><i class="fa-solid fa-person-walking"></i></button>
+            <!-- Botón de transporte público / tren (Activo por defecto) -->
+            <button class="mode-btn active">
+              <i class="fa-solid fa-train" style="color: #2b4360;"></i>
+            </button>
+            
+            <!-- Botón para ir andando / peatón -->
+            <button class="mode-btn">
+              <i class="fa-solid fa-person-walking" style="color: #64748b;"></i>
+            </button>
           </div>
           
           <div id="routeResult" class="route-result-box hidden"></div>
