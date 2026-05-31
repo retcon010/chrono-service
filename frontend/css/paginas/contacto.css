@@ -309,3 +309,14 @@ body {
   }
   #map { min-height: 350px; }
 }
+
+.transport-modes .mode-btn i {
+  font-size: 16px;
+  display: inline-block;
+  /* Esto asegura que el icono tenga color y no se pinte blanco */
+  color: #64748b; 
+}
+
+.transport-modes .mode-btn.active i {
+  color: #2b4360; /* Color azul oscuro para el modo seleccionado */
+}
