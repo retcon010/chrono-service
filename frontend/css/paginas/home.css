@@ -1,4 +1,8 @@
-/* --- HERO SECTION CON BLUR --- */
+
+/* ==========================================
+   HERO SECTION (BANNER PRINCIPAL CON BLUR)
+   ========================================== */
+
 .hero {
   position: relative;
   min-height: 75vh;
@@ -7,9 +11,10 @@
   justify-content: flex-start;
   padding: 60px 10%;
   overflow: hidden;
-  margin-top: 75px; /* Deja espacio libre para que el navbar fijo no lo tape */
+  margin-top: 75px; /* Espacio para evitar que el navbar fijo lo cubra */
 }
 
+/* Fondo con imagen desenfocada */
 .hero::before {
   content: "";
   position: absolute;
@@ -18,24 +23,26 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  filter: blur(8px); 
+  filter: blur(8px);
   transform: scale(1.05);
   z-index: 1;
 }
 
+/* Capa de oscurecimiento + degradado para legibilidad */
 .hero::after {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
   background: linear-gradient(
     to bottom,
-    rgba(28, 45, 66, 0.4) 0%, 
+    rgba(28, 45, 66, 0.4) 0%,
     color-mix(in srgb, var(--color-main) 40%, transparent) 70%,
     var(--color-main) 100%
   );
   z-index: 2;
 }
 
+/* Contenido del hero */
 .hero-content {
   position: relative;
   max-width: 600px;
@@ -57,13 +64,12 @@
   font-size: 56px;
   font-weight: 700;
   line-height: 1.1;
-  color: #ffffff; 
+  color: #ffffff;
   margin-bottom: 20px;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
 }
 
 .hero-description {
-  font-family: "Afacad", sans-serif;
   font-size: 17px;
   line-height: 1.5;
   color: var(--color-neutral);
@@ -76,6 +82,7 @@
   gap: 20px;
 }
 
+/* Botón principal */
 .btn-primary {
   display: inline-block;
   padding: 12px 28px;
@@ -92,6 +99,7 @@
   background-color: var(--color-secondary);
 }
 
+/* Botón secundario tipo enlace */
 .btn-text {
   display: inline-flex;
   align-items: center;
@@ -107,7 +115,10 @@
 .btn-text i { font-size: 18px; }
 
 
-/* --- MECHANICAL HERITAGE SECTION --- */
+/* ==========================================
+   HERITAGE SECTION (LEGADO / HISTORIA)
+   ========================================== */
+
 .heritage-section {
   background-color: var(--color-main);
   padding: 100px 10%;
@@ -124,7 +135,6 @@
 }
 
 .heritage-title-block h2 {
-  font-family: "Afacad", sans-serif;
   font-size: 38px;
   font-weight: 700;
   line-height: 1.1;
@@ -145,21 +155,19 @@
 }
 
 .text-lead {
-  font-family: "Afacad", sans-serif;
   font-size: 22px;
   font-weight: 500;
   line-height: 1.4;
-  color: #000000;
+  color: #000;
 }
 
 .text-body {
-  font-family: "Afacad", sans-serif;
   font-size: 16px;
-  font-weight: 400;
   line-height: 1.6;
   color: var(--color-secondary);
 }
 
+/* Tarjeta estadística */
 .stat-card {
   background-color: var(--color-neutral);
   padding: 45px 35px;
@@ -168,7 +176,6 @@
 
 .stat-number {
   display: block;
-  font-family: "Afacad", sans-serif;
   font-size: 58px;
   font-weight: 600;
   color: #cbd5e1;
@@ -177,21 +184,20 @@
 }
 
 .stat-card h3 {
-  font-family: "Afacad", sans-serif;
   font-size: 18px;
   font-weight: 700;
-  color: #000000;
+  color: #000;
   margin-bottom: 10px;
 }
 
 .stat-card p {
-  font-family: "Afacad", sans-serif;
   font-size: 14px;
-  font-weight: 400;
   line-height: 1.5;
   color: var(--color-secondary);
 }
 
+
+/* Responsive heritage */
 @media (max-width: 900px) {
   .heritage-container {
     grid-template-columns: 1fr;
@@ -200,7 +206,10 @@
 }
 
 
-/* --- SECTION: OUR CAPABILITIES --- */
+/* ==========================================
+   CAPABILITIES SECTION (SERVICIOS)
+   ========================================== */
+
 .capabilities-section {
   background-color: var(--color-main);
   padding: 80px 10%;
@@ -216,8 +225,8 @@
   margin-bottom: 45px;
 }
 
+/* Subtítulo común reutilizable */
 .section-subtitle {
-  font-family: "Afacad", sans-serif;
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 1.5px;
@@ -227,13 +236,12 @@
 }
 
 .section-title {
-  font-family: "Afacad", sans-serif;
   font-size: 36px;
   font-weight: 700;
   color: #1c2d42;
 }
 
-/* --- REJILLA BENTO GRID --- */
+/* Grid tipo bento */
 .capabilities-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -246,44 +254,24 @@
   padding: 40px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  font-family: "Afacad", sans-serif;
 }
 
-.cap-card h3 {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 15px;
-}
+/* Tarjetas base */
+.card-white { background: #fff; color: #000; }
+.card-blue { background: var(--color-primary); color: #fff; }
+.card-grey { background: var(--color-tertiary); color: #000; }
 
-.cap-card p {
-  font-size: 16px;
-  line-height: 1.5;
-}
-
+/* Iconos */
 .card-icon {
   font-size: 28px;
   margin-bottom: 25px;
 }
 
-/* --- VARIACIONES DE TARJETA --- */
-.card-white {
-  background-color: #ffffff;
-  color: #000000;
-}
-
-.card-white .card-icon {
-  color: var(--color-primary);
-}
-
-.card-white p {
-  color: var(--color-secondary);
-}
-
+/* Listas internas */
 .card-list {
   margin-top: 25px;
   list-style: none;
-  padding-left: 0; /* Corrección para limpiar padding por defecto */
+  padding-left: 0;
 }
 
 .card-list li {
@@ -291,137 +279,40 @@
   font-weight: 500;
   color: var(--color-primary);
   margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
 }
 
-.card-list li::before {
-  content: "•";
-  color: var(--color-primary);
-  font-size: 18px;
-}
-
-.card-blue {
-  background-color: var(--color-primary);
-  color: #ffffff;
-}
-
-.card-blue .card-icon {
-  color: var(--color-tertiary);
-}
-
-.card-blue p {
-  color: var(--color-neutral);
-  opacity: 0.9;
-  margin-bottom: auto; /* Empuja el enlace hacia abajo */
-}
-
-.card-link {
-  color: #ffffff;
-  font-weight: 600;
-  font-size: 14px;
-  letter-spacing: 1px;
-  margin-top: 30px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-  transition: opacity 0.3s;
-}
-
-.card-link:hover {
-  opacity: 0.8;
-}
-
-.card-grey {
-  background-color: var(--color-tertiary);
-  color: #000000;
-}
-
-.card-grey h3 {
-  color: #1c2d42;
-}
-
-.card-grey p {
-  color: var(--color-secondary);
-  margin-bottom: 25px;
-}
-
-/* --- COMPORTAMIENTOS BENTO GRID --- */
-.card-wide {
-  grid-column: span 2;
-}
-
-.card-tall {
-  grid-column: 3;
-  grid-row: span 2;
-}
-
+/* Variantes de layout */
+.card-wide { grid-column: span 2; }
+.card-tall { grid-column: 3; grid-row: span 2; }
 .card-horizontal {
   grid-column: span 2;
-  flex-direction: row; 
+  flex-direction: row;
   align-items: center;
-  gap: 30px;
 }
 
-.academy-info {
-  flex: 1.2;
-}
 
-.academy-image {
-  flex: 1;
-  height: 100%;
-  min-height: 160px;
-}
-
-.academy-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 4px;
-}
-
-.btn-academy {
-  display: inline-block;
-  padding: 10px 22px;
-  background-color: #ffffff;
-  color: var(--color-primary);
-  font-weight: 600;
-  font-size: 14px;
-  border-radius: 2px;
-  text-decoration: none;
-  transition: background-color 0.3s;
-}
-
-.btn-academy:hover {
-  background-color: var(--color-neutral);
-}
-
-/* --- RESPONSIVE CAPABILITIES --- */
+/* Responsive grid */
 @media (max-width: 950px) {
   .capabilities-grid {
     grid-template-columns: 1fr;
-    grid-auto-rows: auto;
-  }
-  
-  .card-wide, .card-tall, .card-horizontal {
-    grid-column: auto;
-    grid-row: auto;
   }
 
+  .card-wide,
+  .card-tall,
   .card-horizontal {
-    flex-direction: column;
-    align-items: flex-start;
+    grid-column: auto;
+    grid-row: auto;
   }
 }
 
 
-/* --- SECTION: PRECISION INSIGHTS --- */
+/* ==========================================
+   INSIGHTS SECTION (NOTICIAS)
+   ========================================== */
+
 .insights-section {
   background-color: var(--color-main);
   padding: 80px 10%;
-  width: 100%;
 }
 
 .insights-container {
@@ -432,23 +323,7 @@
 .insights-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
   margin-bottom: 45px;
-}
-
-.archive-link {
-  font-family: "Afacad", sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--color-primary);
-  border-bottom: 2px solid var(--color-primary);
-  padding-bottom: 2px;
-  text-decoration: none;
-  transition: opacity 0.3s;
-}
-
-.archive-link:hover {
-  opacity: 0.8;
 }
 
 .insights-grid {
@@ -457,14 +332,13 @@
   gap: 35px;
 }
 
+/* Tarjeta de noticia */
 .news-card {
   display: flex;
   flex-direction: column;
-  background: transparent;
 }
 
 .card-thumb {
-  width: 100%;
   height: 220px;
   overflow: hidden;
   margin-bottom: 20px;
@@ -475,145 +349,53 @@
   height: 100%;
   object-fit: cover;
   filter: grayscale(100%);
-  transition: filter 0.4s ease;
+  transition: 0.4s;
 }
 
 .news-card:hover .card-thumb img {
   filter: grayscale(30%);
 }
 
-.card-body {
-  display: flex;
-  flex-direction: column;
-  font-family: "Afacad", sans-serif;
-}
 
-.card-date {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--color-primary);
-  letter-spacing: 0.5px;
-  margin-bottom: 12px;
-}
+/* ==========================================
+   TESTIMONIAL + PARTNERS
+   ========================================== */
 
-.card-title {
-  font-size: 22px;
-  font-weight: 700;
-  color: #000000;
-  line-height: 1.2;
-  margin-bottom: 12px;
-}
-
-.card-text {
-  font-size: 15px;
-  line-height: 1.5;
-  color: var(--color-secondary);
-}
-
-/* --- RESPONSIVE INSIGHTS --- */
-@media (max-width: 900px) {
-  .insights-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
-  }
-  
-  .insights-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-}
-
-
-/* --- TESTIMONIAL & PARTNERS SECTION --- */
 .testimonial-partners {
   background-color: #e3ebf0;
   padding: 90px 10%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   text-align: center;
 }
 
 .testimonial-container {
   max-width: 850px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin: 0 auto;
 }
 
 .quote-icon {
   font-size: 36px;
   color: #2b4360;
   margin-bottom: 25px;
-  opacity: 0.95;
 }
 
 .testimonial-text {
-  font-family: "Afacad", sans-serif;
   font-size: 26px;
-  font-weight: 400;
   font-style: italic;
   color: #334155;
-  line-height: 1.45;
-  /* Corrección de márgenes laterales para evitar herencias de bloque nativas */
-  margin: 0 auto 30px auto; 
-  letter-spacing: -0.3px;
-}
-
-.testimonial-author h4 {
-  font-family: "Afacad", sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  color: #1e293b;
-  margin-bottom: 4px;
-}
-
-.author-role {
-  font-family: "Afacad", sans-serif;
-  font-size: 11px;
-  font-weight: 700;
-  color: #516a85;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  margin-bottom: 65px;
+  margin-bottom: 30px;
 }
 
 .partners-logo-grid {
   display: flex;
-  justify-content: center;
-  align-items: center;
   gap: 60px;
+  justify-content: center;
   flex-wrap: wrap;
-  width: 100%;
-  border-top: 1px solid rgba(0, 0, 0, 0.04);
+  border-top: 1px solid rgba(0,0,0,0.04);
   padding-top: 20px;
 }
 
 .partner-logo-item {
-  font-family: "Afacad", sans-serif;
   font-size: 20px;
   font-weight: 600;
   color: #94a3b8;
-  letter-spacing: 2px;
-  user-select: none;
-  transition: color 0.2s ease;
-}
-
-.partner-logo-item:hover {
-  color: #475569;
-}
-
-/* --- RESPONSIVE TESTIMONIAL --- */
-@media (max-width: 640px) {
-  .testimonial-text {
-    font-size: 20px;
-  }
-  .partners-logo-grid {
-    gap: 35px;
-  }
-  .partner-logo-item {
-    font-size: 17px;
-  }
 }
